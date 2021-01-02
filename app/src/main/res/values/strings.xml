@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HealthManager</string>
+    <string name="title_activity_welcome_guide">WelcomeGuideActivity</string>
+
+    <string name="title_mainpage">主页</string>
+    <string name="title_adddata">增加</string>
+    <string name="title_market">商城</string>
+    <string name="title_setting">我的</string>
+</resources>
