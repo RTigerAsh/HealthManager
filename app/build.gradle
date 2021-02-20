@@ -23,6 +23,16 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:28.0.0-rc02'
+
+    //引入litepal数据库包
+    implementation 'org.litepal.guolindev:core:3.1.1'
+    //添加时间省市选择器的库
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+    //添加用于JSON数据传递的库
+    implementation 'com.google.code.gson:gson:2.8.6'
+    //项目中常用选项条目布局控件
+    implementation 'com.lqr.optionitemview:library:1.0.7'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

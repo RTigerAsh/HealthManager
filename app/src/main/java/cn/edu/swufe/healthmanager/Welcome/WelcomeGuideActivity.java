@@ -4,8 +4,7 @@ import android.os.Bundle;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +13,10 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
 import cn.edu.swufe.healthmanager.R;
+import cn.edu.swufe.healthmanager.ui.activity.Login;
 
 public class WelcomeGuideActivity extends Activity implements View.OnClickListener {
     private ViewPager viewPager;
@@ -138,9 +140,9 @@ public class WelcomeGuideActivity extends Activity implements View.OnClickListen
         setCurrentView(position);
         setCurDot(position);
     }
-
+    //点击按钮进入注册登录页面
     private void enterMainActivity(){
-        Intent intent = new Intent(WelcomeGuideActivity.this, WelcomeActivity.class);
+        Intent intent = new Intent(WelcomeGuideActivity.this, Login.class);
         startActivity(intent);
         SharedPreferencesUtil.setBoolean(WelcomeGuideActivity.this, SharedPreferencesUtil.FIRST_OPEN, false);
         finish();

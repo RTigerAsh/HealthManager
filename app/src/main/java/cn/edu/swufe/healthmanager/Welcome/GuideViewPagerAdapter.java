@@ -1,12 +1,15 @@
 package cn.edu.swufe.healthmanager.Welcome;
 
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 
 /*使用适配器来帮助我们更方便的使用ViewPager*/

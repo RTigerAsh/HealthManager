@@ -1,11 +1,11 @@
 package cn.edu.swufe.healthmanager;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import java.util.List;
+
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class MyFragAdapter extends FragmentStatePagerAdapter {
     Context context;
