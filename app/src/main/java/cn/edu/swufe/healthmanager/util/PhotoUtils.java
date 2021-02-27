@@ -33,7 +33,7 @@ import android.util.Log;
 
 import androidx.core.content.FileProvider;
 
-import com.foodsharetest.android.ui.activity.PersonInfo;
+import cn.edu.swufe.healthmanager.ui.activity.PersonInfo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

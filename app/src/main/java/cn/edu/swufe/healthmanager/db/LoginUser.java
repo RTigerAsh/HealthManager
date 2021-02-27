@@ -47,6 +47,7 @@ public class LoginUser extends Application {
 
     //重新init
     public void reinit(){
+        System.out.println(_user);
         login_user.id = _user.getId();
         login_user.name = _user.getName();
         login_user.portrait = _user.getPortrait();

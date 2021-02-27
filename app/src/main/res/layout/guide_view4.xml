@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@mipmap/welcome_guide4"/>
+        android:src="@mipmap/welcome44"/>
 
     <Button
         android:id="@+id/btn_login"

@@ -9,7 +9,7 @@
     android:background="@color/gray9">
 
 <!--    标题栏-->
-    <com.foodsharetest.android.widget.TitleLayout
+    <cn.edu.swufe.healthmanager.widget.TitleLayout
         android:id="@+id/tl_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -23,7 +23,7 @@
         android:paddingBottom="10dp"
         android:background="@color/white">
 
-        <com.foodsharetest.android.widget.RoundImageView
+        <cn.edu.swufe.healthmanager.widget.RoundImageView
             android:id="@+id/ri_portrait"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -41,7 +41,7 @@
 
     </LinearLayout>
 <!--    编辑界面，此处可以写成一个ItemGroup上传至com上-->
-    <com.foodsharetest.android.widget.ItemGroup
+    <cn.edu.swufe.healthmanager.widget.ItemGroup
         android:id="@+id/ig_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         app:paddingLeft="@dimen/padding_left_and_right"
         app:title="ID号" />
 
-    <com.foodsharetest.android.widget.ItemGroup
+    <cn.edu.swufe.healthmanager.widget.ItemGroup
         android:id="@+id/ig_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:paddingLeft="@dimen/padding_left_and_right"
         app:title="@string/my_name2" />
 
-    <com.foodsharetest.android.widget.ItemGroup
+    <cn.edu.swufe.healthmanager.widget.ItemGroup
         android:id="@+id/ig_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         app:paddingLeft="@dimen/padding_left_and_right"
         app:title="@string/my_gender"/>
 
-    <com.foodsharetest.android.widget.ItemGroup
+    <cn.edu.swufe.healthmanager.widget.ItemGroup
         android:id="@+id/ig_region"
         android:layout_width="match_parent"
         android:layout_height="46dp"
@@ -73,7 +73,7 @@
         app:paddingLeft="@dimen/padding_left_and_right"
         app:title="常住地" />
 
-    <com.foodsharetest.android.widget.ItemGroup
+    <cn.edu.swufe.healthmanager.widget.ItemGroup
         android:id="@+id/ig_brithday"
         android:layout_width="match_parent"
         android:layout_height="46dp"

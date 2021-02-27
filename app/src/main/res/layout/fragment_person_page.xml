@@ -35,7 +35,7 @@
             android:layout_marginTop="@dimen/option_item_margin_top"
             android:gravity="center_vertical">
 
-            <com.foodsharetest.android.widget.RoundImageView
+            <cn.edu.swufe.healthmanager.widget.RoundImageView
                 android:id="@+id/portrait"
                 android:layout_width="60dp"
                 android:layout_height="60dp"

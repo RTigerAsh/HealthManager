@@ -19,6 +19,7 @@ public class WelcomeActivity extends Activity {
          * 如果是第一次启动，则先展示开屏页面之后进入功能引导页*/
         boolean isFirstOpen = SharedPreferencesUtil.getBoolean(this, SharedPreferencesUtil.FIRST_OPEN, true);
         if(isFirstOpen){
+            System.out.println("运行到这里");
             setContentView(R.layout.activity_welcome);
             new Handler().postDelayed(new Runnable() {
                 @Override

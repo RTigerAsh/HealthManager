@@ -6,8 +6,22 @@
     <string name="title_adddata">增加</string>
     <string name="title_market">商城</string>
     <string name="title_setting">我的</string>
-    <!-- 个人信息（编辑信息）-->
+    <string name="action_settings">Settings</string>
 
+    <!--我的-->
+
+    <string name="my_item1">关注</string>
+
+    <string name="my_item2">粉丝</string>
+
+    <string name="my_item3">收藏</string>
+
+    <string name="my_item4">最近浏览</string>
+
+    <string name="my_account">vip</string>
+
+    <string name="my_name">方浩镭</string>
+    <!-- 个人信息（编辑信息）-->
 
     <string name="my_id">ID号</string>
 

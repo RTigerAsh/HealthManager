@@ -98,6 +98,7 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
+
         setContentView(R.layout.activity_person_info);
 
 
