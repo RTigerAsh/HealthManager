@@ -13,6 +13,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import cn.edu.swufe.healthmanager.util.ActivityCollector;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityCollector.addActivity(this);
         setContentView(R.layout.activity_main);
 
         initView();//初始化
@@ -96,6 +98,13 @@ public class MainActivity extends AppCompatActivity {
 //                  SCROLL_STATE_SETTLING：拖动结束,实际值为2
             }
         });
+    }
+
+    //在主页退出时直接退出所有活动
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        ActivityCollector.finishAll();
     }
 
 

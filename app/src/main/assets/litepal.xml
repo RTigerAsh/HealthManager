@@ -1,8 +1,11 @@
 <litepal>
-    <dbname value="food_db"/>
-    <version value = "1"/>
+    <dbname value="healthmanager_db"/>
+    <version value = "2"/>
     <list>
         <mapping class="cn.edu.swufe.healthmanager.db.model.User"/>
+        <mapping class="cn.edu.swufe.healthmanager.db.model.DairyBodyMessage"/>
+        <mapping class="cn.edu.swufe.healthmanager.db.model.DairyFoodMessage"/>
+        <mapping class="cn.edu.swufe.healthmanager.db.model.DairySportsMessage"/>
 
     </list>
 </litepal>
