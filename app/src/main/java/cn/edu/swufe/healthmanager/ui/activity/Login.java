@@ -13,11 +13,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import cn.edu.swufe.healthmanager.MainActivity;
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.db.LoginUser;
 import cn.edu.swufe.healthmanager.db.model.User;
+import cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.GetBaseData;
 import cn.edu.swufe.healthmanager.util.ActivityCollector;
 import cn.edu.swufe.healthmanager.util.MD5;
 import cn.edu.swufe.healthmanager.util.ToastUtils;
@@ -28,11 +30,12 @@ import java.util.List;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private EditText et_name,et_password;
-    private Button login,register;
+    private Button login;
     private ImageView iv_eye,iv_more_account;
     private CheckBox cb_remember;
     private boolean passwordVisible = false;
     private ToastUtils toastUtils = new ToastUtils();
+    private TextView register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
         login = (Button) findViewById(R.id.login);
-        register = (Button) findViewById(R.id.register);
+        register = (TextView) findViewById(R.id.register);
         et_name = (EditText) findViewById(R.id.et_account_name);
         et_password = (EditText) findViewById(R.id.et_password);
         iv_eye = (ImageView) findViewById(R.id.iv_eye);
@@ -124,12 +127,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     user.update(user.getId());
                     //用户登入，存入LoginUser
                     LoginUser.getInstance().login(user);
-                    //启动主界面
-                    Intent intent1 = new Intent(Login.this, MainActivity.class);
-                    startActivity(intent1);
-                    login_flag = true;
-                    toastUtils.showShort(Login.this,"账户"+user.getName()+" 登录成功");
-                    break;
+
+                    //第一次注册的用户登录跳转到基础信息获取页面
+                    if(getIntent().getBooleanExtra("first_register",true)) {
+                        Log.d("health","first_register");
+                        Intent intent1 = new Intent(Login.this, GetBaseData.class);
+                        startActivity(intent1);
+
+                    }else {
+                        //启动主界面
+                        Intent intent1 = new Intent(Login.this, MainActivity.class);
+                        startActivity(intent1);
+                        login_flag = true;
+                        toastUtils.showShort(Login.this,"账户"+user.getName()+" 登录成功");
+                        break;
+                    }
                 }else {
                     user.setRemember(0);
                 }

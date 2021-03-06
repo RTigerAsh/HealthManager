@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="45dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black0"
+        android:textSize="25dp"
+        android:text="你健康管理目标是？"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="50dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <!--单选-->
+        <RadioGroup
+            android:id="@+id/rg_getbasedata_3"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <RadioButton
+                android:id="@+id/btn_jz_getbasedata_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="减重"
+                android:textSize="17.0sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:checked="true"
+                android:button="@null"
+                android:drawableTop="@drawable/selecter_jz"
+                />
+            <RadioButton
+                android:id="@+id/btn_bc_getbasedata_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:text="保持/塑形"
+                android:textSize="17.0sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/selecter_bc"
+                />
+            <RadioButton
+                android:id="@+id/btn_zz_getbasedata_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:text="增重/增肌"
+                android:textSize="17.0sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:checked="true"
+                android:button="@null"
+                android:drawableTop="@drawable/selecter_zz"
+                />
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="45dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black0"
+        android:textSize="25dp"
+        android:text="你的目标体重是？"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black1"
+        android:text="先实现一个小目标把，瘦个3~5斤 "/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        >
+        <cn.edu.swufe.healthmanager.util.slidingruleview.SlidingRuleView_Kg
+            android:id="@+id/slidView_kg_getbasedata_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_getbasedata_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_drawable_blue"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:text="    下一步    "
+        />
+</LinearLayout>

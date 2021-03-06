@@ -29,6 +29,8 @@
         <activity android:name=".ui.activity.PersonInfo" />
         <activity android:name=".ui.activity.Register" />
         <activity android:name=".ui.activity.Setting" />
+        <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />
+        <activity android:name=".ui.activity.HealthReport" />
         <activity android:name=".MainActivity" />
 
     </application>

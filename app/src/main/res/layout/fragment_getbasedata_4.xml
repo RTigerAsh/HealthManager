@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="45dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black0"
+        android:textSize="25dp"
+        android:text="准备用多长时间达到目标体重？"/>
+
+    <TextView
+        android:id="@+id/tv_getbasedata_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black1"
+        android:text="加油完成目标吧~ "/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <cn.edu.swufe.healthmanager.util.slidingruleview.SlidingRuleView_week
+            android:id="@+id/slidView_week_getbasedata_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="45dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black0"
+        android:textSize="25dp"
+        android:text="是否存在特殊情况？（可多选）"/>
+
+    <ListView
+        android:id="@+id/listview_getbasedata_4"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp">
+
+
+    </ListView>
+
+    <Button
+        android:id="@+id/button_getbasedata_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_drawable_blue"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:text="    完成档案    "
+        />
+
+</LinearLayout>

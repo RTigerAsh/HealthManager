@@ -2,13 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/wallpaper_11"
     android:gravity="center">
+
+
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp">
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:id="@+id/qq"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:text="HealthCare"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
 <!--        用户名输入-->
         <LinearLayout
@@ -25,6 +46,8 @@
 <!--            用户名输入框，限制中文输入-->
             <EditText
                 android:id="@+id/et_account_name"
+
+
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -36,6 +59,7 @@
                 android:textSize="16sp"
                 android:drawableLeft="@drawable/ic_person"
                 android:drawablePadding="8dp"/>
+
 
             <ImageView
                 android:id="@+id/iv_more_accout"
@@ -92,33 +116,51 @@
             android:layout_marginTop="10dp">
 
             <CheckBox
+                android:buttonTint="@color/white"
                 android:id="@+id/cb_remember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:text="@string/remember"/>
         </LinearLayout>
 
 <!--        注册登录按钮-->
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+            <Button
+                android:id="@+id/login"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:background="#1E90FF"
+                android:textColor="@color/white"
+                android:text="@string/login" />
+            <TextView
+                android:layout_marginTop="15dp"
+                android:id="@+id/register"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="170dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新用户注册" />
+            <!--
             <Button
                 android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/register" />
-
-            <Button
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
-                android:text="@string/login" />
+                android:background="@color/assist_blue"
+                android:text="@string/register" />-->
+
+
         </LinearLayout>
 
     </LinearLayout>

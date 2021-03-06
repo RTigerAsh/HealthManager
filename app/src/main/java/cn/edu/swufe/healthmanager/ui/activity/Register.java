@@ -72,7 +72,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     mToast.setText("注册成功");
                     mToast.show();
 
+                    //传入注册成功TAG到登陆页面
+
                     Intent intent = new Intent(Register.this, Login.class);
+                    intent.putExtra("first_register", name);
                     startActivity(intent);
                 }
         }

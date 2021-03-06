@@ -30,12 +30,10 @@ public class User extends LitePalSupport implements Comparable<User> {
     private String brithday;
 
     //预期健康信息
-    private Integer height;
-    private Double weight;
-    private Double weight_goals;//目标体重
-    private Integer Weight_management_goals;//体重管理目标 通过标记选择（0减重 1保持/塑形 2增重/增肌）
-    private Double weight_losstime;//预期多长时间达到目标
-    private Integer Special_disease;//慢性病等特殊情况 标记选择(0没有 ...)
+    private  Integer aim_style;//体重管理目标 通过标记选择（0减重 1保持/塑形 2增重/增肌）
+    private  float height,weight,aim_weight,aim_time;//预期多长时间达到目标
+    private ArrayList<String> Special_disease_List;//慢性病等特殊情况 标记选择(0没有 ...)
+
 
     //一对多连接各类表
     private List<DairyBodyMessage> dairybodymessageList = new ArrayList<DairyBodyMessage>();
@@ -55,10 +53,10 @@ public class User extends LitePalSupport implements Comparable<User> {
                 ", gender='" + gender + '\'' +
                 ", height='" + height + '\'' +
                 ", weight='" + weight + '\'' +
-                ", weight_goals='" + weight_goals + '\'' +
-                ", Weight_management_goals='" + Weight_management_goals + '\'' +
-                ", weight_losstime='" + weight_losstime + '\'' +
-                ", Special_disease='" + Special_disease + '\'' +
+                ", aim_weight='" + aim_weight + '\'' +
+                ", aim_style='" + aim_style + '\'' +
+                ", aim_time='" + aim_time + '\'' +
+                ", Special_disease_List='" + Special_disease_List + '\'' +
                 '}';
     }
 
@@ -147,51 +145,51 @@ public class User extends LitePalSupport implements Comparable<User> {
         this.password = password;
     }
 
-    public Integer getHeight() {
+    public Integer getAim_style() {
+        return aim_style;
+    }
+
+    public void setAim_style(Integer aim_style) {
+        this.aim_style = aim_style;
+    }
+
+    public float getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(float height) {
         this.height = height;
     }
 
-    public Double getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
-    public Double getWeight_goals() {
-        return weight_goals;
+    public float getAim_weight() {
+        return aim_weight;
     }
 
-    public void setWeight_goals(Double weight_goals) {
-        this.weight_goals = weight_goals;
+    public void setAim_weight(float aim_weight) {
+        this.aim_weight = aim_weight;
     }
 
-    public Integer getWeight_management_goals() {
-        return Weight_management_goals;
+    public float getAim_time() {
+        return aim_time;
     }
 
-    public void setWeight_management_goals(Integer weight_management_goals) {
-        Weight_management_goals = weight_management_goals;
+    public void setAim_time(float aim_time) {
+        this.aim_time = aim_time;
     }
 
-    public Double getWeight_losstime() {
-        return weight_losstime;
+    public ArrayList<String> getSpecial_disease_List() {
+        return Special_disease_List;
     }
 
-    public void setWeight_losstime(Double weight_losstime) {
-        this.weight_losstime = weight_losstime;
-    }
-
-    public Integer getSpecial_disease() {
-        return Special_disease;
-    }
-
-    public void setSpecial_disease(Integer special_disease) {
-        Special_disease = special_disease;
+    public void setSpecial_disease_List(ArrayList<String> special_disease_List) {
+        Special_disease_List = special_disease_List;
     }
 }

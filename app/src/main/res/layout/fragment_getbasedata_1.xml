@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="45dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black0"
+        android:textSize="25dp"
+        android:text="你的性别是？"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black1"
+        android:text="男女身体状况不同，请如实填写 "/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="60dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <!--两个性别图片实现单选-->
+        <RadioGroup
+            android:id="@+id/rg_getbasedata_1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <RadioButton
+                android:id="@+id/btn_m_getbasedata_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:text="男生"
+                android:textSize="17.0sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:checked="true"
+                android:button="@null"
+                android:drawableTop="@drawable/selecter_m"
+                />
+            <RadioButton
+                android:id="@+id/btn_f_getbasedata_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dp"
+                android:text="女生"
+                android:textSize="17.0sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/selecter_f"
+                />
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black0"
+        android:textSize="25dp"
+        android:text="你的身高是？"/>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <cn.edu.swufe.healthmanager.util.slidingruleview.SlidingRuleView_cm
+            android:id="@+id/slidView_cm_getbasedata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/button_getbasedata_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_drawable_blue"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:text="    下一步    "
+        />
+
+
+
+</LinearLayout>
