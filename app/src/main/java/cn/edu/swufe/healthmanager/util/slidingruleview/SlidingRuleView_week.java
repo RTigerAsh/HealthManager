@@ -286,7 +286,7 @@ public class SlidingRuleView_week extends View {
         paint.setTextSize(currentNumberSize);
         //确定数字的值。用移动多少来确定
         currentNum = df.format((greenPointX + getScrollX() - leftBorder) / (lineDegreeSpace * 10.0f));
-        System.out.println("在srv中获取的currentNum"+currentNum);
+        //System.out.println("在srv中获取的currentNum"+currentNum);
         setCurrentNumber(Float.parseFloat(currentNum));
 
         //测量数字宽度

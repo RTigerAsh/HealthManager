@@ -3,6 +3,7 @@
     package="cn.edu.swufe.healthmanager">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -18,7 +19,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity android:name=".Welcome.WelcomeActivity">
-            <intent-filter>
+          <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,9 +30,17 @@
         <activity android:name=".ui.activity.PersonInfo" />
         <activity android:name=".ui.activity.Register" />
         <activity android:name=".ui.activity.Setting" />
-        <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />
-        <activity android:name=".ui.activity.HealthReport" />
+        <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />DetailePlan
+        <activity android:name=".ui.activity.DetailePlan" />
+        <activity android:name=".ui.activity.HealthReport" >
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
         <activity android:name=".MainActivity" />
+
 
     </application>
 

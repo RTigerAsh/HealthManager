@@ -16,8 +16,8 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="100dp"
         android:background="@drawable/button_shape"
-        android:text="开始旅途"
-        android:textColor="#ce102c"
+        android:text="开始体验"
+        android:textColor="#ffffff"
         android:textSize="18sp"
         android:visibility="visible"/>
 

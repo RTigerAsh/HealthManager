@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import cn.edu.swufe.healthmanager.MainActivity;
 import cn.edu.swufe.healthmanager.R;
+import cn.edu.swufe.healthmanager.ui.activity.Login;
 
 
 public class WelcomeActivity extends Activity {
@@ -50,7 +51,7 @@ public class WelcomeActivity extends Activity {
         finish();
     }
     private void enterHomeActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
         finish();
     }

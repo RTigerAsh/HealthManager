@@ -10,6 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@mipmap/welcome_main_background"/>
+        android:src="@mipmap/main_welcome"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

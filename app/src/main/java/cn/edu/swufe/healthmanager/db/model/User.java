@@ -50,6 +50,7 @@ public class User extends LitePalSupport implements Comparable<User> {
                 ", password='" + password + '\'' +
                 ", remember=" + remember +
                 ", region='" + region + '\'' +
+                ", brithday='" + brithday + '\'' +
                 ", gender='" + gender + '\'' +
                 ", height='" + height + '\'' +
                 ", weight='" + weight + '\'' +

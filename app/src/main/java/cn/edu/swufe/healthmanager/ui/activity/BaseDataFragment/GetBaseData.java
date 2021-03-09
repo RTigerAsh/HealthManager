@@ -4,6 +4,8 @@ package cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import org.litepal.LitePal;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,16 +114,16 @@ public class GetBaseData extends AppCompatActivity {
     * **/
     public void goHealthInfo(){
         if (judge_data==8){
-            User updateUser = new User();
+            User updateUser =LitePal.find(User.class,1);
             updateUser.setGender(this.gender.toString());
             updateUser.setBrithday(this.birthday);
             updateUser.setHeight(this.height);
-            updateUser.setWeight(this.height);
-            updateUser.setWeight(this.height);
+            updateUser.setWeight(this.weight);
             updateUser.setAim_style(this.aim_style);
             updateUser.setAim_time(this.aim_time);
+            updateUser.setAim_weight(this.aim_weight);
             updateUser.setSpecial_disease_List(this.List);
-            updateUser.updateAll("id = ? ", ""+id);
+            updateUser.updateAll("id = ? ", ""+1);
 
             //跳转到报告展示页面
             Intent intent1 = new Intent(GetBaseData.this, HealthReport.class);

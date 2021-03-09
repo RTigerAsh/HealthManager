@@ -100,4 +100,16 @@
     <!-- 图标的颜色-->
 
     <color name="menu_icon">#FF000000</color>
+
+    <!-- bmi控件-->
+    <color name="colorPrimary_BMI">#3F51B5</color>
+    <color name="colorPrimaryDark_BMI">#303F9F</color>
+    <color name="colorAccent_BMI">#FF4081</color>
+    <color name="yellow">#fff6ae03</color>
+    <color name="green">#1f9c0d</color>
+    <color name="gray">#acacac</color>
+    <color name="red">#fdff3f42</color>
+
+    <color name="bg">#f9f9f9f9</color>
+    <color name="gray_light">#e2e2e2</color>
 </resources>

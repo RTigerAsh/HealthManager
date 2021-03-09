@@ -86,6 +86,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onStart(){
         super.onStart();
+
         //从本地数据库判断是否记住密码
         List<User> users = LitePal.findAll(User.class);
         for (User u:users){

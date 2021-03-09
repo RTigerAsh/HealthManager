@@ -85,6 +85,7 @@ public class Fragment3_aims extends Fragment implements RadioGroup.OnCheckedChan
                         public void switchFragment(CustomViewPager viewPager) {
                             //fragment传递数据
                             aim_weight=srv.getCurrentNumber();
+                            System.out.println("在第三个fragment中获得的srv，aim_weight="+aim_weight);
                             getBaseData.setAim_style(aim_style);
                             getBaseData.setAim_weight(aim_weight);
                             viewPager.setCurrentItem(3);

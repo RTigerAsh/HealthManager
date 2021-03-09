@@ -70,7 +70,7 @@ public class ItemGroup extends FrameLayout{
         int defaultHintColor = context.getResources().getColor(R.color.gray9);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ItemGroup);
-        String title = typedArray.getString(R.styleable.ItemGroup_title);
+        String title = typedArray.getString(R.styleable.ItemGroup_ItemGrouptitle);
         float paddingLeft = typedArray.getDimension(R.styleable.ItemGroup_paddingLeft, 15);
         float paddingRight = typedArray.getDimension(R.styleable.ItemGroup_paddingRight, 15);
         float paddingTop = typedArray.getDimension(R.styleable.ItemGroup_paddingTop, 5);
