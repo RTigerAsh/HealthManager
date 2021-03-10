@@ -6,30 +6,63 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@color/gray5"
+    tools:context=".ui.activity.MainAvtivity.MainActivity"
     app:itemIconTint="@drawable/colortext"
     app:itemTextColor="@drawable/colortext">
 
-    <androidx.viewpager.widget.ViewPager
+    <cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.CustomViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_weight="11"
         android:layout_height="0dp"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_weight="1"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="@drawable/colortext"
-        app:itemTextColor="@drawable/colortext"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+        android:layout_height="wrap_content"
+        android:clipToPadding="true">
+        <LinearLayout
+            android:layout_marginTop="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!--android:background="?android:attr/windowBackground"-->
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:background="@color/white"
+                app:labelVisibilityMode="labeled"
+                app:itemIconTint="@drawable/colortext"
+                app:itemTextColor="@drawable/colortext"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:menu="@menu/navigation" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="60dip"
+            android:layout_height="60dip"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:src="@mipmap/add_main_0" />
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:src="@mipmap/add" />
+
+
+    </FrameLayout>
+
+
 
 
 

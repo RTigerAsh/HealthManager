@@ -16,21 +16,23 @@
         <activity
             android:name=".Welcome.WelcomeGuideActivity"
             android:label="@string/title_activity_welcome_guide"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
 
         <activity android:name=".Welcome.WelcomeActivity">
-          <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>
+                  <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                  <category android:name="android.intent.category.LAUNCHER" />
+              </intent-filter>-->
         </activity>
         <activity android:name=".ui.activity.Login" />
         <activity android:name=".ui.activity.EditName" />
         <activity android:name=".ui.activity.PersonInfo" />
         <activity android:name=".ui.activity.Register" />
         <activity android:name=".ui.activity.Setting" />
-        <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />DetailePlan
+        <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />
         <activity android:name=".ui.activity.DetailePlan" />
         <activity android:name=".ui.activity.HealthReport" >
             <!--<intent-filter>
@@ -39,7 +41,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.activity.MainAvtivity.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
 
     </application>

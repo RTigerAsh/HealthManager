@@ -1,21 +1,21 @@
-package cn.edu.swufe.healthmanager;
+package cn.edu.swufe.healthmanager.ui.activity.MainAvtivity;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.Nullable;
+import cn.edu.swufe.healthmanager.R;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
-public class Fragment3 extends Fragment {
+public class Fragment1 extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_fragment_page3, container, false);
+        View view = inflater.inflate(R.layout.fragment_showdata_page1, container, false);
 
         return view;
     }

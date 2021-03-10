@@ -1,4 +1,4 @@
-package cn.edu.swufe.healthmanager;
+package cn.edu.swufe.healthmanager.ui.adapter;
 
 import android.content.Context;
 import androidx.fragment.app.Fragment;

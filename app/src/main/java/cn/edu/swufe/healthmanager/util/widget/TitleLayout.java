@@ -1,4 +1,4 @@
-package cn.edu.swufe.healthmanager.widget;
+package cn.edu.swufe.healthmanager.util.widget;
 
 import android.app.Activity;
 import android.content.Context;

@@ -5,11 +5,19 @@
         android:id="@+id/navigation_mainpage"
         android:icon="@drawable/ic_border_outer_black_48dp"
         android:title="@string/title_mainpage" />
+    <item
+        android:id="@+id/navigation_message"
+        android:icon="@drawable/add_main"
+        android:title="问答"  />
+    <item
+        android:id="@+id/navigation_center"
+        android:icon="@null"
+        android:title=""  />
 
     <item
-        android:id="@+id/navigation_adddata"
-        android:icon="@drawable/ic_add_circle_outline_black_48dp"
-        android:title="@string/title_adddata" />
+        android:id="@+id/navigation_shop"
+        android:icon="@drawable/add_main"
+        android:title="商城" />
 
     <!--<item-->
         <!--android:id="@+id/navigation_market"-->

@@ -1,5 +1,5 @@
 //转载自https://blog.csdn.net/a_ycmbc/article/details/51373211
-package cn.edu.swufe.healthmanager.widget;
+package cn.edu.swufe.healthmanager.util.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

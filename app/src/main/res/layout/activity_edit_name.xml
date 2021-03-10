@@ -7,7 +7,7 @@
     tools:context=".ui.activity.EditName"
     android:background="@color/gray9">
 
-    <cn.edu.swufe.healthmanager.widget.TitleLayout
+    <cn.edu.swufe.healthmanager.util.widget.TitleLayout
         android:id="@+id/tl_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

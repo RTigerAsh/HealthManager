@@ -1,47 +1,87 @@
-package cn.edu.swufe.healthmanager;
+package cn.edu.swufe.healthmanager.ui.activity.MainAvtivity;
 
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.litepal.LitePal;
+
 import androidx.fragment.app.Fragment;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import cn.edu.swufe.healthmanager.db.LoginUser;
+import cn.edu.swufe.healthmanager.db.model.User;
+import cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.CustomViewPager;
+import cn.edu.swufe.healthmanager.ui.adapter.MyFragAdapter;
+import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.util.ActivityCollector;
+import cn.edu.swufe.healthmanager.util.PhotoUtils;
+import cn.edu.swufe.healthmanager.util.PopupMenuUtil;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
     private static final String TAG = "MainActivity";
-    ViewPager viewPager;
+    CustomViewPager viewPager;
     BottomNavigationView navigation;//底部导航栏对象
     List<Fragment> listFragment;//存储页面对象
-
+    private ImageView ivImg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
         setContentView(R.layout.activity_main);
-
+        intTestdata();
         initView();//初始化
+        ivImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenuUtil.getInstance()._show(MainActivity.this, ivImg);
+            }
+        });
+    }
+
+    private void intTestdata() {
+        User testUser = new User();
+        testUser.setName("测试账号");
+        testUser.setId(1);
+        testUser.setGender("0");
+        testUser.setBrithday("1999年6月5日");
+        LoginUser.getInstance().login(testUser);
+
+        //User updateUser =LitePal.findFirst(User.class);
+        //testUser.setPortrait(PhotoUtils.file2byte());
+        testUser.setHeight(170);
+        testUser.setWeight(63);
+        testUser.setAim_style(0);
+        testUser.setAim_time(20);
+        testUser.setAim_weight(60);
+        testUser.save();
+        System.out.println("testUser:    "+testUser);
     }
 
     private void initView() {
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        viewPager = (CustomViewPager) findViewById(R.id.view_pager);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        ivImg = (ImageView)findViewById(R.id.iv_img);
 
         //向ViewPager添加各页面
         listFragment = new ArrayList<>();
         listFragment.add(new Fragment1());
         listFragment.add(new Fragment2());
-        //listFragment.add(new Fragment3());
+        listFragment.add(new Fragment3());
         listFragment.add(new Fragment4());
 
         MyFragAdapter myAdapter = new MyFragAdapter(getSupportFragmentManager(), this, listFragment);
@@ -55,12 +95,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_mainpage:
                         viewPager.setCurrentItem(0);
                         return true;
-                    case R.id.navigation_adddata:
+                    case R.id.navigation_message:
                         viewPager.setCurrentItem(1);
                         return true;
-//                    case R.id.navigation_user:
-//                        viewPager.setCurrentItem(2);
-//                        return true;
+                    case R.id.navigation_shop:
+                        viewPager.setCurrentItem(2);
+                        return true;
                     case R.id.navigation_setting:
                         viewPager.setCurrentItem(3);
                         return true;
@@ -107,5 +147,14 @@ public class MainActivity extends AppCompatActivity {
         ActivityCollector.finishAll();
     }
 
+    @Override
+    public void onBackPressed() {
+// 当popupWindow 正在展示的时候 按下返回键 关闭popupWindow 否则关闭activity
+        if (PopupMenuUtil.getInstance()._isShowing()) {
+            PopupMenuUtil.getInstance()._rlClickAction();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
 }
