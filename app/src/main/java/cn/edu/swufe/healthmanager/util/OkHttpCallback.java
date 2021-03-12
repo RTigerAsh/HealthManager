@@ -12,7 +12,7 @@ public class OkHttpCallback implements Callback {
     private final String TAG = OkHttpCallback.class.getSimpleName();
 
     public String url;
-    public  String result;
+    public String result;
 
 
     /**
@@ -24,7 +24,7 @@ public class OkHttpCallback implements Callback {
     public void onFailure(Call call, IOException e) {
         Log.d(TAG, "url: " + url);
         Log.d(TAG, "请求失败" + e.toString());
-        onFinish("Failure", e.toString());
+        onFinish(false, e.toString());
     }
 
     /**
@@ -38,16 +38,16 @@ public class OkHttpCallback implements Callback {
         Log.d(TAG, "url: "+url);
         result = response.body().string().toString();
         Log.d(TAG, "请求成功" + result);
-        onFinish("Success", result);
+        onFinish(true, result);
     }
 
     /**
      * 自定义方法，用以查看参数
-     * @param status
-     * @param msg
+     * @param isSuccess
+     * @param rlt
      */
-    public void  onFinish(String status, String msg){
-        Log.d(TAG, "url: " + url + " status: " + status );
+    public void  onFinish(boolean isSuccess, String rlt){
+        Log.d(TAG, "url: " + url + " status: " + isSuccess );
     }
 
 
