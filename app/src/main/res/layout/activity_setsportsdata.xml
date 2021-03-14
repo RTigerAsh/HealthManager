@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/sport_TitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#65c8b3"
+        app:title="添加运动"
+        app:titleStyle="bold"
+        app:titleColor="@color/white"/>
+
+    <ListView
+        android:layout_below="@+id/sport_TitleBar"
+        android:layout_above="@+id/sport_bottom_layout"
+        android:id="@+id/listview_setsportsdata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/sport_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="8dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom">
+
+        <ImageView
+
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/button_finish_getsportdata"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="2"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:text="完成"
+            android:background="@drawable/button_drawable_blue" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_gravity="left"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:src="@drawable/sportlist0"/>
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/sport_image_1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_gravity="left"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:src="@drawable/sportlist1"/>
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/sport_reddot"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:layout_marginLeft="80dp"
+        android:layout_gravity="left"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+
+        android:src="@drawable/dot"/>
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/sport_reddot_text"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:layout_marginLeft="80dp"
+        android:text="1"
+        android:textSize="10dp"
+        android:textColor="@color/white"
+        android:layout_width="14dp"
+        android:layout_height="14dp" />
+<!--用来展示已选的运动-->
+    <LinearLayout
+        android:id="@+id/show_selectedsport"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bmi_bg_top"
+        android:orientation="vertical">
+        <TextView
+            android:gravity="right"
+            android:id="@+id/sport_selectedtv_quxiao"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black0"
+            android:text="取消" />
+        <ListView
+            android:layout_marginTop="10dp"
+            android:id="@+id/sport_selectedlist"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+
+            android:layout_above="@+id/sport_selectedtv">
+
+        </ListView>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:id="@+id/sport_selectedtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray5"
+            android:text="总计 xxx千卡" />
+    </LinearLayout>
+</RelativeLayout>

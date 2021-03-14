@@ -35,6 +35,7 @@
         <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />
         <activity android:name=".ui.activity.DetailePlan" />
         <activity android:name=".ui.activity.HealthReport" >
+
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,8 +49,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
+        <activity android:name=".ui.activity.SetSportsData" >
+        </activity>
+        <activity android:name=".ui.activity.SetFoodData" >
+        </activity>
+        <activity android:name=".ui.activity.SetWeightPopupWindow" android:theme="@style/MyDialogStyleBottom" />
+        <activity android:name=".ui.activity.SetSleepPopupWindow" android:theme="@style/MyDialogStyleBottom" />
     </application>
 
 </manifest>

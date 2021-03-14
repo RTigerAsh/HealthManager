@@ -2,6 +2,7 @@ package cn.edu.swufe.healthmanager.util;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,6 +14,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import cn.edu.swufe.healthmanager.R;
+import cn.edu.swufe.healthmanager.ui.activity.SetFoodData;
+import cn.edu.swufe.healthmanager.ui.activity.SetSleepPopupWindow;
+import cn.edu.swufe.healthmanager.ui.activity.SetSportsData;
+import cn.edu.swufe.healthmanager.ui.activity.SetWeightPopupWindow;
 
 
 public class PopupMenuUtil {
@@ -125,12 +130,58 @@ public class PopupMenuUtil {
 
         @Override
         public void onClick(View v) {
-            if (index == 0) {
-                //加号按钮点击之后的执行
-                _rlClickAction();
-            } else {
-                showToast(context, "index=" + index);
+//            if (index == 0) {
+//                //加号按钮点击之后的执行
+//                _rlClickAction();
+//            } else {
+//
+//            }
+
+            switch (index){
+                case 0:
+                    _rlClickAction();
+                    break;
+                case 1:
+                    _close();
+                    //每日打卡，放入sp中
+                    showToast(context, "打卡成功");
+
+                    break;
+                case 2:
+                    //求助帖
+                    showToast(context, "index=" + index);
+                    break;
+                case 5:
+                    _close();
+                    //记运动 _close()在popupwindow中需要用到上一个页面传递过来的context，通过context来调用startActivity实现页面的跳转。
+                    Intent intent5 = new Intent(context, SetSportsData.class);
+                    context.startActivity(intent5);
+                    //showToast(context, "index=" + index);
+                    break;
+                case 6:
+                    //记饮食
+                    Intent intent6 = new Intent(context, SetFoodData.class);
+                    context.startActivity(intent6);
+                    //showToast(context, "index=" + index);
+                    break;
+                case 7:
+                    //记体重
+                    _close();
+                    Intent intent7 = new Intent(context, SetWeightPopupWindow.class);
+                    context.startActivity(intent7);
+                    showToast(context, "index=" + index);
+                    break;
+                case 8:
+                    //记睡眠
+                    _close();
+                    Intent intent8 = new Intent(context, SetSleepPopupWindow.class);
+                    context.startActivity(intent8);
+                    showToast(context, "index=" + index);
+                    break;
+                default:
+                    break;
             }
+
         }
     }
 

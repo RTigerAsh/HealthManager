@@ -53,6 +53,7 @@ public class Fragment4_end extends Fragment implements View.OnClickListener {
         getBaseData = (GetBaseData) getActivity();
         super.onAttach(context);
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
