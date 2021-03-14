@@ -36,6 +36,11 @@ public class SharedPreferencesUtil {
         editor.commit();
     }
 
+    public void putString(String key, String str){
+        editor.putString(key,str);
+        editor.commit();
+    }
+
     public void putObject(String key, Object value){
         Gson gson = new Gson();
         String str = gson.toJson(value);
@@ -46,6 +51,12 @@ public class SharedPreferencesUtil {
     // 读取数据
     public boolean readBoolean(String key){
         return sharedPreferences.getBoolean(key, false);
+    }
+
+
+    public String readString(String key){
+        String str = sharedPreferences.getString(key, "");
+        return str;
     }
 
     public Object readObject(String key, Class clazz){

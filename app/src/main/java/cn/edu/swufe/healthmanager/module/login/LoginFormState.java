@@ -9,6 +9,8 @@ public class LoginFormState {
     private Integer passwordError;
     @Nullable
     private Integer captchaCodeError;
+    @Nullable
+    private Integer ensurePasswordError = null;
     private  boolean isDataValid;
 
     LoginFormState(@Nullable Integer usernameError, @Nullable Integer passwordError, @Nullable Integer captchaCodeError){
@@ -17,6 +19,15 @@ public class LoginFormState {
         this.captchaCodeError = captchaCodeError;
         this.isDataValid = false;
     }
+
+    LoginFormState(@Nullable Integer usernameError, @Nullable Integer passwordError, @Nullable Integer captchaCodeError, @Nullable Integer ensurePasswordError){
+        this.usernameError = usernameError;
+        this.passwordError = passwordError;
+        this.captchaCodeError = captchaCodeError;
+        this.ensurePasswordError = ensurePasswordError;
+        this.isDataValid = false;
+    }
+
 
     LoginFormState(){
         this.usernameError = null;
@@ -39,6 +50,12 @@ public class LoginFormState {
     public Integer getCaptchaCodeError() {
         return captchaCodeError;
     }
+
+    @Nullable
+    public Integer getEnsurePasswordError() {
+        return ensurePasswordError;
+    }
+
 
     public boolean isDataValid() {
         return isDataValid;

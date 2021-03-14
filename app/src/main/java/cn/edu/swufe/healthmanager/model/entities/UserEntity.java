@@ -1,14 +1,10 @@
 package cn.edu.swufe.healthmanager.model.entities;
 
-import java.util.Date;
-
 public class UserEntity {
 
     private String id;
 
     private String userName;
-
-    private String password;
 
     private String roles;
 
@@ -20,13 +16,6 @@ public class UserEntity {
 
     private String state;
 
-    private String regIp;
-
-    private String loginIp;
-
-    private Date createTime;
-
-    private Date updateTime;
 
     public String getId() {
         return id;
@@ -42,14 +31,6 @@ public class UserEntity {
 
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
     }
 
     public String getRoles() {
@@ -92,35 +73,4 @@ public class UserEntity {
         this.state = state == null ? null : state.trim();
     }
 
-    public String getRegIp() {
-        return regIp;
-    }
-
-    public void setRegIp(String regIp) {
-        this.regIp = regIp == null ? null : regIp.trim();
-    }
-
-    public String getLoginIp() {
-        return loginIp;
-    }
-
-    public void setLoginIp(String loginIp) {
-        this.loginIp = loginIp == null ? null : loginIp.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

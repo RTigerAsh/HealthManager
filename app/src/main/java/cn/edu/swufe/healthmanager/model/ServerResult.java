@@ -10,6 +10,7 @@ public class ServerResult<T>{
 
     public static ServerResult createLinkFail(){
         ServerResult failure = new ServerResult();
+        failure.setCode(3);
         failure.setSuccess(false);
         failure.setMsg("连接出错");
 
