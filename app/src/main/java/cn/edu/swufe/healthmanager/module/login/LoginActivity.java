@@ -1,5 +1,7 @@
 package cn.edu.swufe.healthmanager.module.login;
 
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -37,7 +39,6 @@ import cn.edu.swufe.healthmanager.db.model.User;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.UserEntity;
 import cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.GetBaseData;
-import cn.edu.swufe.healthmanager.ui.activity.Register;
 import cn.edu.swufe.healthmanager.util.MD5;
 import cn.edu.swufe.healthmanager.util.SharedPreferencesUtil;
 import cn.edu.swufe.healthmanager.util.ToastUtils;
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private boolean passwordVisible = false;
     private ToastUtils toastUtils = new ToastUtils();
     private TextView register;
-    private LinearLayout ly_captcha, ly_ensure;
+    private LinearLayout ly_captcha, ly_ensure, ly_login;
 
 
     @Override
@@ -69,29 +70,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         loginViewModel = new ViewModelProvider(this, new LoginVIewModelFactory()).get(LoginViewModel.class);
 
-        et_name = ( EditText ) findViewById(R.id.et_account_name);
-        et_password = (EditText) findViewById(R.id.et_password);
-        et_ensure_password = findViewById(R.id.et_ensure_password);
-        et_captcha = (EditText) findViewById(R.id.et_captcha);
-
-        bt_login = findViewById(R.id.login);
-
-        ly_captcha = findViewById(R.id.ly_captcha);
-        ly_ensure = findViewById(R.id.ly_ensure);
-
-        iv_captcha = findViewById(R.id.iv_captcha);
-        iv_eye = (ImageView) findViewById(R.id.iv_eye);
-        iv_more_account = (ImageView) findViewById(R.id.iv_more_accout);
-
-        register = (TextView) findViewById(R.id.register);
-
-        cb_remember = ( CheckBox ) findViewById(R.id.cb_remember);
-
-        loading = findViewById(R.id.loading);
+        initView();
 
 
+        // 设置动画
+        LayoutTransition transition = new LayoutTransition();
 
-        //设置监听器
+        ObjectAnimator animator_x = ObjectAnimator.ofFloat(null, "scaleX",   1, 0);
+        ObjectAnimator animator_y = ObjectAnimator.ofFloat(null, "scaleX",  0, 1);
+
+
+        transition.setAnimator(LayoutTransition.DISAPPEARING, animator_x);
+        transition.setAnimator(LayoutTransition.APPEARING, animator_y);
+        ly_login.setLayoutTransition(transition);
+
+
+        // 设置监听器
         bt_login.setOnClickListener(this);
         register.setOnClickListener(this);
         iv_eye.setOnClickListener(this);
@@ -100,7 +94,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         sharedPreferencesUtil = SharedPreferencesUtil.getInstance(this);
-
 
         // 检测验证码获取
         loginViewModel.getCaptchaResult().observe(this, new Observer<ServerResult<Bitmap>>() {
@@ -171,6 +164,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     updateUiWithUser(userEntityServerResult.getMsg());
                     final String token = userEntityServerResult.getToken();
 
+                    Log.i(TAG, "Token ->" + token);
                     // 存储Token
                     new Thread(new Runnable() {
                         @Override
@@ -194,7 +188,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             }
         });
-
 
 
         // 检测文本输入
@@ -243,26 +236,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 return false;
             }
         });
+    }
 
+    private void initView() {
+        // EditText
+        et_name = findViewById(R.id.et_account_name);
+        et_password =  findViewById(R.id.et_password);
+        et_ensure_password = findViewById(R.id.et_ensure_password);
+        et_captcha = findViewById(R.id.et_captcha);
 
-//        bt_login.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View v) {
-//                loginViewModel.login(et_captcha.getText().toString(),
-//                        et_name.getText().toString(),
-//                        et_password.getText().toString());
-//            }
-//        });
+        // Button
+        bt_login = findViewById(R.id.login);
 
-        // 点击获得新验证码
-//        iv_captcha.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loginViewModel.getCaptcha();
-//            }
-//        });
+        // LinearLayout
+        ly_captcha = findViewById(R.id.ly_captcha);
+        ly_ensure = findViewById(R.id.ly_ensure);
+        ly_login = findViewById(R.id.ly_login);
 
+        // ImageView
+        iv_captcha = findViewById(R.id.iv_captcha);
+        iv_eye =  findViewById(R.id.iv_eye);
+        iv_more_account = findViewById(R.id.iv_more_accout);
+
+        // Text
+        register = findViewById(R.id.register);
+
+        // CheckBox
+        cb_remember = findViewById(R.id.cb_remember);
+
+        // ProcessBar
+        loading = findViewById(R.id.loading);
     }
 
 
@@ -275,24 +278,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    private void updateUiWithUser(String msg) {
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-    }
-
-    private void showLoginFailed(String errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
-    }
 
     @Override
     public void onClick(View v) {
-        String name = et_name.getText().toString();
-        String password=et_password.getText().toString();
-
         switch (v.getId()){
             //注册按钮的逻辑， 点一次进入注册， 再点一次返回登录
             case R.id.register:
-//                Intent intent = new Intent(LoginActivity.this, Register.class);
-//                startActivity(intent);
                 if(doLogin){
                     // 显示再次输入密码框
                     ly_ensure.setVisibility(View.VISIBLE);
@@ -308,9 +299,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     bt_login.setText(R.string.login);
                     doLogin = true;
                 }
-
-
-
                 break;
             //登录按钮的逻辑
             case R.id.login:
@@ -320,7 +308,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         et_name.getText().toString(),
                         et_password.getText().toString(),
                         doLogin);
-
 
 //                loginProcess(name, password);
                 break;
@@ -347,6 +334,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
     }
+
+    private void updateUiWithUser(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    private void showLoginFailed(String errorString) {
+        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
 
     @Deprecated
     private void loginProcess(String name, String password) {

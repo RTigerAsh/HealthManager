@@ -15,35 +15,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".module.consultation.consultasionActivity"
-            android:label="@string/title_activity_consultasion"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar"></activity>
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".module.community.CommunityActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".TestActivity" />
         <activity
             android:name=".Welcome.WelcomeGuideActivity"
             android:label="@string/title_activity_welcome_guide"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Welcome.WelcomeActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
-        <activity android:name=".ui.activity.Login"></activity>
-        <activity android:name=".module.login.LoginActivity">
-
-        </activity>
+        <activity android:name=".ui.activity.Login" />
+        <activity android:name=".module.login.LoginActivity"></activity>
         <activity android:name=".ui.activity.EditName" />
         <activity android:name=".ui.activity.PersonInfo" />
         <activity android:name=".ui.activity.Register" />
         <activity android:name=".ui.activity.Setting" />
         <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />
         <activity android:name=".ui.activity.DetailePlan" />
-        <activity android:name=".ui.activity.HealthReport"></activity>
+        <activity android:name=".ui.activity.HealthReport" />
         <activity android:name=".MainActivity" />
     </application>
 

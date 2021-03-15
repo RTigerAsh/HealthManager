@@ -106,7 +106,7 @@ public class WelcomeActivity extends AppCompatActivity{
                 if(userEntityServerResult.getCode()==3){ // 连接失败
                     showFailMsg(userEntityServerResult.getMsg());
                 }else if(userEntityServerResult.isSuccess()){
-                    // 3. 请求成功，保存用户数据
+                    // 3. 请求成功，创建单例对象，保存用户数据
                     UserEntity userEntity = userEntityServerResult.getData();
 
                     LoginUser loginUser = LoginUser.getInstance();

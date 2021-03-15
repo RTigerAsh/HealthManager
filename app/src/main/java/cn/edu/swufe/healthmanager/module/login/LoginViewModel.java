@@ -199,7 +199,7 @@ public class LoginViewModel  extends ViewModel {
             @Override
             public void onFailure(Call call, IOException e) {
                 super.onFailure(call, e);
-                resultLoginResult.postValue(ServerResult.createLinkFail());
+                requestResult.postValue(ServerResult.createLinkFail());
             }
 
             @Override
@@ -211,23 +211,17 @@ public class LoginViewModel  extends ViewModel {
                     Type rltType = new TypeToken<ServerResult<UserEntity>>(){}.getType();
 
                     ServerResult<UserEntity> serverResult = JsonUtil.toMutiModel(rlt, rltType);
-                    resultRegisterResult.postValue(serverResult);
+                    requestResult.postValue(serverResult);
 
                 }else{
                     // 响应错误
-                    resultRegisterResult.postValue(ServerResult.createLinkFail());
+                    requestResult.postValue(ServerResult.createLinkFail());
                 }
             }
         });
     }
 
 
-    // 保存Token
-    public void saveData(SharedPreferencesUtil sharedPreferencesUtil, String tokenKey){
-
-        sharedPreferencesUtil.putString(Configs.SP_TOKEN_KEY, tokenKey);
-
-    }
 
 
     // 输入数据验证，以 doLogin 来区分是否要确认密码
@@ -238,54 +232,10 @@ public class LoginViewModel  extends ViewModel {
         }else if(!isUserNameExist(username)){
             loginFormStateMutableLiveData.setValue(new LoginFormState(R.string.not_exist_usename, null, null));
 
-        }else if (!doLogin && !isPasswordValid(password)){
-            loginFormStateMutableLiveData.setValue(new LoginFormState(null, R.string.invalid_password, null));
-
-        }else if(!isEnsurePasswordValid(password, ensurePassword)){
-            Log.i(TAG, "isEnsurePasswordValid: " + false);
-            loginFormStateMutableLiveData.setValue(new LoginFormState(null, null, null, R.string.invalid_ensurePassword));
-
-        } else if (!isCaptChaCodeValid(captchaCode)){
-            loginFormStateMutableLiveData.setValue(new LoginFormState(null, null, R.string.invalid_captchaCode));
-
-        }else{
-            loginFormStateMutableLiveData.setValue(new LoginFormState());
-        }
-    }
-
-    @Deprecated
-    // 输入数据验证
-    public void loginDataChanged(String username, String password, String captchaCode){
-        if(!isUserNameValid(username)){
-            loginFormStateMutableLiveData.setValue(new LoginFormState(R.string.invalid_username, null, null));
-
-        }else if(!isUserNameExist(username)){
-            loginFormStateMutableLiveData.setValue(new LoginFormState(R.string.not_exist_usename, null, null));
-
         }else if (!isPasswordValid(password)){
             loginFormStateMutableLiveData.setValue(new LoginFormState(null, R.string.invalid_password, null));
 
-        }else if (!isCaptChaCodeValid(captchaCode)){
-            loginFormStateMutableLiveData.setValue(new LoginFormState(null, null, R.string.invalid_captchaCode));
-
-        }else{
-            loginFormStateMutableLiveData.setValue(new LoginFormState());
-        }
-    }
-
-    @Deprecated
-    // 注册输入验证， 可再加入一个 cheak 参数，从而合并两个代码
-    public void registerDataChanged(String username, String password, String ensurePassword, String captchaCode){
-        if(!isUserNameValid(username)){
-            loginFormStateMutableLiveData.setValue(new LoginFormState(R.string.invalid_username, null, null));
-
-        }else if(!isUserNameExist(username)){
-            loginFormStateMutableLiveData.setValue(new LoginFormState(R.string.not_exist_usename, null, null));
-
-        }else if (!isPasswordValid(password)){
-            loginFormStateMutableLiveData.setValue(new LoginFormState(null, R.string.invalid_password, null));
-
-        }else if(!isEnsurePasswordValid(password, ensurePassword)){
+        }else if(!doLogin && !isEnsurePasswordValid(password, ensurePassword)){
             Log.i(TAG, "isEnsurePasswordValid: " + false);
             loginFormStateMutableLiveData.setValue(new LoginFormState(null, null, null, R.string.invalid_ensurePassword));
 
@@ -332,4 +282,11 @@ public class LoginViewModel  extends ViewModel {
     }
 
 
+
+    // 保存Token
+    public void saveData(SharedPreferencesUtil sharedPreferencesUtil, String tokenKey){
+
+        sharedPreferencesUtil.putString(Configs.SP_TOKEN_KEY, tokenKey);
+
+    }
 }
