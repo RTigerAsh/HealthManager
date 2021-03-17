@@ -13,14 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import cn.edu.swufe.healthmanager.R;
+import cn.edu.swufe.healthmanager.common.Configs;
 import cn.edu.swufe.healthmanager.model.entities.QuestionEntity;
+import cn.edu.swufe.healthmanager.util.DateUtil;
 
 public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRecyclerViewAdapter.MyHolder> {
+
     Context context;
     private List<QuestionEntity> questionEntities;
 
-    public QuestionRecyclerViewAdapter(Context context){
+    public QuestionRecyclerViewAdapter(Context context, List<QuestionEntity> questionEntities){
         this.context = context;
+        this.questionEntities = questionEntities;
     }
 
     @NonNull
@@ -35,12 +39,21 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+        if(questionEntities != null && questionEntities.size() > position){
+            QuestionEntity questionEntity = questionEntities.get(position);
+            holder.tv_userName.setText(questionEntity.getUserName());
+            holder.tv_content.setText(questionEntity.getContent());
+            holder.tv_tag.setText(questionEntity.getLabels());
+            holder.tv_updateTime.setText(DateUtil.toFormString(questionEntity.getUpdateTime()));
 
+            // 数字需要转成文本，否则会调用寻找id的setText方法
+            holder.tv_viewCount.setText(String.valueOf(questionEntity.getViewCount()));
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return questionEntities == null || questionEntities.size()==0 ? Configs.DEFAULT_SIZE : questionEntities.size();
     }
 
     class MyHolder extends RecyclerView.ViewHolder {

@@ -38,6 +38,7 @@ import cn.edu.swufe.healthmanager.db.LoginUser;
 import cn.edu.swufe.healthmanager.db.model.User;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.UserEntity;
+import cn.edu.swufe.healthmanager.module.community.CommunityActivity;
 import cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.GetBaseData;
 import cn.edu.swufe.healthmanager.util.MD5;
 import cn.edu.swufe.healthmanager.util.SharedPreferencesUtil;
@@ -61,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private boolean passwordVisible = false;
     private ToastUtils toastUtils = new ToastUtils();
     private TextView register;
-    private LinearLayout ly_captcha, ly_ensure, ly_login;
+    private LinearLayout ly_captcha, ly_ensure, ly_login, ly_login_background;
 
 
     @Override
@@ -176,8 +177,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     toastUtils.showShort(LoginActivity.this,"账户"+userEntityServerResult.getData().getUserName()+" 登录成功");
 
-                    // 设置跳转的页面，携带Token参数
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    // 存储LoginUser，设置跳转的页面
+                    UserEntity loginedUser = userEntityServerResult.getData();
+                    loginedUser.setTokenKey(token);
+
+                    cn.edu.swufe.healthmanager.model.LoginUser.getInstance().updateUserEntity(loginedUser);
+
+
+                    Intent intent = new Intent(LoginActivity.this, CommunityActivity.class);
                     intent.putExtra(Configs.SP_TOKEN_KEY, token);
 
                     // 跳转页面
@@ -249,6 +256,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         bt_login = findViewById(R.id.login);
 
         // LinearLayout
+        ly_login_background = findViewById(R.id.login_background_ly);
         ly_captcha = findViewById(R.id.ly_captcha);
         ly_ensure = findViewById(R.id.ly_ensure);
         ly_login = findViewById(R.id.ly_login);
@@ -286,6 +294,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.register:
                 if(doLogin){
                     // 显示再次输入密码框
+                    ly_login_background.setBackgroundResource(R.drawable.wallpape_22);
                     ly_ensure.setVisibility(View.VISIBLE);
                     register.setText(R.string.back_login);
                     // 设置按钮为注册
@@ -293,6 +302,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     doLogin = false;
                 }else{
                     // 隐藏再次输入密码框
+                    ly_login_background.setBackgroundResource(R.drawable.wallpaper_11);
                     ly_ensure.setVisibility(View.GONE);
                     register.setText(R.string.back_login);
                     // 设置按钮为登录

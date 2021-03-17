@@ -76,5 +76,5 @@
 
     <string name="invalid_ensurePassword">两次密码输入不一致</string>
 
-    <string name="content_hi">Hellow World</string>
+    <string name="content_hi">Hello World</string>
 </resources>

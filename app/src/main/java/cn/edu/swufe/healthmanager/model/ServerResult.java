@@ -1,7 +1,7 @@
 package cn.edu.swufe.healthmanager.model;
 
 public class ServerResult<T>{
-    private boolean isSuccess = true;
+    private boolean success;
     private int code;
     private String token;
     private String msg;
@@ -19,11 +19,11 @@ public class ServerResult<T>{
 
 
     public boolean isSuccess() {
-        return isSuccess;
+        return success;
     }
 
     public void setSuccess(boolean success) {
-        isSuccess = success;
+        this.success = success;
     }
 
     public int getCode() {

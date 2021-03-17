@@ -10,6 +10,12 @@ public class Configs {
 
     public static final String SP_TOKEN_KEY = "tokenKey";
 
+    public static final int PAGE_SIZE = 10;
+
+    public static final int DEFAULT_SIZE = 4;
+
+
+
 
 
 }

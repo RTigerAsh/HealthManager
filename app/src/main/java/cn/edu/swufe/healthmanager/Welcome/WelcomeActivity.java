@@ -29,6 +29,7 @@ import cn.edu.swufe.healthmanager.common.RequsestApi;
 import cn.edu.swufe.healthmanager.model.LoginUser;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.UserEntity;
+import cn.edu.swufe.healthmanager.module.community.CommunityActivity;
 import cn.edu.swufe.healthmanager.module.login.LoginActivity;
 import cn.edu.swufe.healthmanager.ui.activity.Login;
 import cn.edu.swufe.healthmanager.util.JsonUtil;
@@ -41,6 +42,7 @@ import okhttp3.Call;
 public class WelcomeActivity extends AppCompatActivity{
     private final String TAG = getClass().getSimpleName();
     private cn.edu.swufe.healthmanager.util.SharedPreferencesUtil sharedPreferencesUtil;
+    private static String tokenKey;
     private WelcomeViewModel welcomeViewModel;
 
     private final String MAIN = "main";
@@ -84,16 +86,16 @@ public class WelcomeActivity extends AppCompatActivity{
         sharedPreferencesUtil = cn.edu.swufe.healthmanager.util.SharedPreferencesUtil.getInstance(this);
 
         // 1. 读取SP中的Token
-        String token  = sharedPreferencesUtil.readString(Configs.SP_TOKEN_KEY);
+        tokenKey  = sharedPreferencesUtil.readString(Configs.SP_TOKEN_KEY);
 
-        Log.i(TAG, "token == " + token);
+        Log.i(TAG, "token == " + tokenKey);
 
         // 2. 请求服务器验证
-        if(token.equals("")){ // 用户未登录，跳转登录页面
+        if(tokenKey.equals("")){ // 用户未登录，跳转登录页面
             Log.i(TAG, "toLogin? " + true);
             enterAcitity(LOGIN);
         }else{
-            welcomeViewModel.getUserInfo(token);
+            welcomeViewModel.getUserInfo(tokenKey);
         }
 
         welcomeViewModel.getUserInfoReslut().observe(this, new Observer<ServerResult<UserEntity>>() {
@@ -102,6 +104,7 @@ public class WelcomeActivity extends AppCompatActivity{
                 if(userEntityServerResult == null){
                     return;
                 }
+                Log.i(TAG, "isSuccess: " + userEntityServerResult.isSuccess());
 
                 if(userEntityServerResult.getCode()==3){ // 连接失败
                     showFailMsg(userEntityServerResult.getMsg());
@@ -109,8 +112,9 @@ public class WelcomeActivity extends AppCompatActivity{
                     // 3. 请求成功，创建单例对象，保存用户数据
                     UserEntity userEntity = userEntityServerResult.getData();
 
-                    LoginUser loginUser = LoginUser.getInstance();
-                    loginUser.updateUserEntity(userEntity);
+                    UserEntity loginedUser = userEntityServerResult.getData();
+                    loginedUser.setTokenKey(tokenKey);
+                    LoginUser.getInstance().updateUserEntity(loginedUser);
 
                     // 4. 刷新token
                     sharedPreferencesUtil.putString(Configs.SP_TOKEN_KEY, userEntityServerResult.getToken());
@@ -149,7 +153,7 @@ public class WelcomeActivity extends AppCompatActivity{
                 intent = new Intent(this, LoginActivity.class);
                 break;
             case "main":
-                intent = new Intent(this, MainActivity.class);
+                intent = new Intent(this, CommunityActivity.class);
                 break;
             default:
                 intent = new Intent(this, WelcomeActivity.class);

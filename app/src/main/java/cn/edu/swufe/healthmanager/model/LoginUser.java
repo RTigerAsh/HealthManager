@@ -14,6 +14,7 @@ public class LoginUser {
     private LoginUser(){}
 
     public static LoginUser getInstance(){
+        // 保证线程安全
         if(instance == null){
             synchronized (LoginUser.class){
                 if(instance == null){

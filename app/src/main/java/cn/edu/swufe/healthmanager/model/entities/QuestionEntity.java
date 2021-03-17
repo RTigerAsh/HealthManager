@@ -1,5 +1,7 @@
 package cn.edu.swufe.healthmanager.model.entities;
 
+import java.util.Date;
+
 public class QuestionEntity {
     private String id;
 
@@ -18,6 +20,8 @@ public class QuestionEntity {
     private String content;
 
     private Integer viewCount;
+
+    private Date updateTime;
 
     public String getId() {
         return id;
@@ -89,5 +93,13 @@ public class QuestionEntity {
 
     public void setViewCount(Integer viewCount) {
         this.viewCount = viewCount;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

@@ -15,9 +15,11 @@ public class JsonUtil {
        return gson.fromJson(jsonStr, tClass);
     }
 
+    // 转Type对象
     public static <T> T toMutiModel(String jsonStr, Type type){
          return  gson.fromJson(jsonStr, type);
     }
+
 
     public static String  toJsonStr(Object model){
         return gson.toJson(model);

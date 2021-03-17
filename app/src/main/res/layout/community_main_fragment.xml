@@ -3,11 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".module.community.cmmunityFragments.MainFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/community_recycle_view"
+    <com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/community_recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_gravity="bottom|right"
+            android:clickable="true"
+            app:backgroundTint="#FFF"
+            app:rippleColor="#000"
+            app:backgroundTintMode="src_in"
+            android:src="@drawable/base_add_icon"
+            android:id="@+id/community_add_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+
+            android:contentDescription="add"
+            />
+
+
+    </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>
 </FrameLayout>

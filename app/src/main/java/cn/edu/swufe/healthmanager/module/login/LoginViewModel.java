@@ -111,12 +111,6 @@ public class LoginViewModel  extends ViewModel {
         // 2. 发出http请求
         OkHttpUtils.post(url, requestJson, new OkHttpCallback(){
             @Override
-            public void onFailure(Call call, IOException e) {
-                super.onFailure(call, e);
-                resultLoginResult.postValue(ServerResult.createLinkFail());
-            }
-
-            @Override
             public void onFinish(boolean isSuccess, String rlt) {
                 super.onFinish(isSuccess, rlt);
                 // 连接成功
@@ -156,12 +150,6 @@ public class LoginViewModel  extends ViewModel {
         // 2. 发出http请求
         OkHttpUtils.post(url, requestJson, new OkHttpCallback(){
             @Override
-            public void onFailure(Call call, IOException e) {
-                super.onFailure(call, e);
-                resultLoginResult.postValue(ServerResult.createLinkFail());
-            }
-
-            @Override
             public void onFinish(boolean isSuccess, String rlt) {
                 super.onFinish(isSuccess, rlt);
                 // 连接成功
@@ -196,12 +184,6 @@ public class LoginViewModel  extends ViewModel {
 
         // 2. 发出http请求
         OkHttpUtils.post(url, requestJson, new OkHttpCallback(){
-            @Override
-            public void onFailure(Call call, IOException e) {
-                super.onFailure(call, e);
-                requestResult.postValue(ServerResult.createLinkFail());
-            }
-
             @Override
             public void onFinish(boolean isSuccess, String rlt) {
                 super.onFinish(isSuccess, rlt);

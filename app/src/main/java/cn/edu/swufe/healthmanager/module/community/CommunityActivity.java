@@ -14,7 +14,6 @@ import java.util.List;
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.module.community.cmmunityFragments.MainFragment;
 import cn.edu.swufe.healthmanager.module.community.cmmunityFragments.MineFragment;
-import cn.edu.swufe.healthmanager.module.community.cmmunityFragments.OtherFragment;
 
 public class CommunityActivity extends AppCompatActivity{
 

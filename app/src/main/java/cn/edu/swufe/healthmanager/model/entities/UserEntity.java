@@ -16,6 +16,8 @@ public class UserEntity {
 
     private String state;
 
+    private String tokenKey;
+
 
     public String getId() {
         return id;
@@ -73,4 +75,21 @@ public class UserEntity {
         this.state = state == null ? null : state.trim();
     }
 
+    public String getTokenKey() {
+        return tokenKey;
+    }
+
+    public void setTokenKey(String tokenKey) {
+        this.tokenKey = tokenKey;
+    }
+
+    public void updateTokenKey(String newTokenKey){
+        if(this.getTokenKey() == null || newTokenKey == null) return;
+
+        if(!this.getTokenKey().equals(newTokenKey)){
+            this.setTokenKey(newTokenKey);
+            // TODO: 修改sharedPreference， or 标记token变化，等待程序退出时再更新token
+        }
+
+    }
 }
