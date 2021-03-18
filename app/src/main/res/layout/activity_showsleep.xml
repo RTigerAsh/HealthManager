@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.hjq.bar.TitleBar
+        android:id="@+id/TitleBar_showsleep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#65c8b3"
+        app:title="睡眠记录"
+        app:titleStyle="bold"
+        app:titleColor="@color/white"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/TitleBar_showsleep"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <cn.edu.swufe.healthmanager.util.echartview.EchartView
+                android:layout_marginTop="30dp"
+                android:id="@+id/linechart_showsleep2"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linechart_showsleep1"
+                android:layout_width="400dp"
+                android:layout_height="300dp">
+
+            </cn.edu.swufe.healthmanager.util.echartview.EchartView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                app:cardCornerRadius="4dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!--健康方案标题-->
+                    <LinearLayout
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="8dip"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.2"
+                            android:background="@color/gray5"
+                            android:gravity="center"/>
+                        <TextView
+                            android:layout_marginRight="10dp"
+                            android:textStyle="bold"
+                            android:textSize="18dp"
+                            android:paddingLeft="8dp"
+                            android:textColor="@color/black0"
+                            android:text="我的睡眠方案"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="6"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:paddingLeft="30dp"
+                            android:paddingRight="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="睡眠的作用有补充人体的能量，增强自身抵抗力，促进人体的正常生长发育，使人体得到充分的休息等。睡眠对于保护人的心理健康与维护人的正常心理活动极其重要。"/>
+                        <View
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dip"
+                            android:background="@color/gray5"
+                            android:gravity="center"/>
+
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/black0"
+                                android:textStyle="bold"
+                                android:gravity="left"
+                                android:layout_weight="1"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="保证正常睡眠"/>
+                            <TextView
+                                android:gravity="right"
+                                android:layout_weight="1"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="8小时"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+</RelativeLayout>

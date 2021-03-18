@@ -34,10 +34,10 @@ dependencies {
     implementation 'com.lqr.optionitemview:library:1.0.7'
     //okhttp引入
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    //图表库
-    //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     //标题栏
     implementation 'com.hjq:titlebar:8.5'
+    //图表库
+    implementation 'com.github.abel533:ECharts:3.0.0.2'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

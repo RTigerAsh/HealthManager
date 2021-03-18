@@ -16,12 +16,13 @@ import cn.edu.swufe.healthmanager.db.LoginUser;
 import cn.edu.swufe.healthmanager.ui.activity.HealthReport;
 import cn.edu.swufe.healthmanager.ui.activity.PersonInfo;
 import cn.edu.swufe.healthmanager.ui.activity.Setting;
+import cn.edu.swufe.healthmanager.ui.activity.showhealthdata.ShowWeight;
 import cn.edu.swufe.healthmanager.util.PhotoUtils;
 import cn.edu.swufe.healthmanager.util.widget.RoundImageView;
 
 public class Fragment4 extends Fragment implements View.OnClickListener {
     private ImageView setting;
-    private LinearLayout info,info_base,info_healthreport,in_food,info_lastweek;
+    private LinearLayout info,info_base,info_healthreport,info_lastweek;
     private TextView info_name,info_account;
     private RoundImageView portrait;
     private LoginUser loginUser = LoginUser.getInstance();
@@ -36,7 +37,7 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
 
         info_base= (LinearLayout)view.findViewById(R.id.perinfo_message);
         info_healthreport= (LinearLayout)view.findViewById(R.id.perinfo_healthreport);
-        in_food= (LinearLayout)view.findViewById(R.id.perinfo_food);
+
         info_lastweek= (LinearLayout)view.findViewById(R.id.perinfo_weekweight);
 
 
@@ -45,7 +46,7 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
         info_base.setOnClickListener(this);
         info_healthreport.setOnClickListener(this);
 
-
+        info_lastweek.setOnClickListener(this);
 
         //登录则初始化用户的信息
         initInfo();
@@ -81,6 +82,11 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
             case R.id.perinfo_healthreport:
                 Intent intent3 = new Intent(getActivity(), HealthReport.class);
                 startActivity(intent3);
+                break;
+
+            case R.id.perinfo_weekweight:
+                Intent intent5 = new Intent(getActivity(), ShowWeight.class);
+                startActivity(intent5);
                 break;
             default:
                 break;

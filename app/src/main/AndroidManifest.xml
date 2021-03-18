@@ -8,9 +8,9 @@
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
@@ -21,11 +21,9 @@
         </activity>
 
         <activity android:name=".Welcome.WelcomeActivity">
-            <!--<intent-filter>
-                  <action android:name="android.intent.action.MAIN" />
 
-                  <category android:name="android.intent.category.LAUNCHER" />
-              </intent-filter>-->
+
+
         </activity>
         <activity android:name=".ui.activity.Login" />
         <activity android:name=".ui.activity.EditName" />
@@ -35,12 +33,6 @@
         <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />
         <activity android:name=".ui.activity.DetailePlan" />
         <activity android:name=".ui.activity.HealthReport" >
-
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
         <activity android:name=".ui.activity.MainAvtivity.MainActivity" >
             <intent-filter>
@@ -49,12 +41,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.SetSportsData" >
-        </activity>
-        <activity android:name=".ui.activity.SetFoodData" >
-        </activity>
+        <activity android:name=".ui.activity.SetSportsData" ></activity>
+        <activity android:name=".ui.activity.SetFoodData" ></activity>
         <activity android:name=".ui.activity.SetWeightPopupWindow" android:theme="@style/MyDialogStyleBottom" />
         <activity android:name=".ui.activity.SetSleepPopupWindow" android:theme="@style/MyDialogStyleBottom" />
+        <activity android:name=".ui.activity.tesrview" ></activity>
+        <activity android:name=".ui.activity.showhealthdata.ShowSleep" ></activity>
+        <activity android:name=".ui.activity.showhealthdata.ShowWeight" ></activity>
+        <activity android:name=".ui.activity.showhealthdata.ShowSports" ></activity>
+        <activity android:name=".ui.activity.showhealthdata.ShowFood" ></activity>
     </application>
 
 </manifest>
