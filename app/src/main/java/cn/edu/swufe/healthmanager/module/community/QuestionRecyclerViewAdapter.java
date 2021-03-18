@@ -1,6 +1,7 @@
 package cn.edu.swufe.healthmanager.module.community;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+
 import java.util.List;
 
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
 import cn.edu.swufe.healthmanager.model.entities.QuestionEntity;
 import cn.edu.swufe.healthmanager.util.DateUtil;
+import cn.edu.swufe.healthmanager.util.UrlUtil;
 
 public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRecyclerViewAdapter.MyHolder> {
 
@@ -46,6 +50,8 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
             holder.tv_tag.setText(questionEntity.getLabels());
             holder.tv_updateTime.setText(DateUtil.toFormString(questionEntity.getUpdateTime()));
 
+            Log.i("IMAGE", UrlUtil.getImage(questionEntity.getUserAvatar()));
+            holder.iv_userAvatar.setImageURI(UrlUtil.getImage(questionEntity.getUserAvatar()));
             // 数字需要转成文本，否则会调用寻找id的setText方法
             holder.tv_viewCount.setText(String.valueOf(questionEntity.getViewCount()));
         }
@@ -58,7 +64,7 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
 
     class MyHolder extends RecyclerView.ViewHolder {
 
-        private ImageView iv_userAvatar;
+        private SimpleDraweeView iv_userAvatar;
         private TextView tv_userName, tv_updateTime, tv_content, tv_tag, tv_viewCount;
 
         public MyHolder(@NonNull View itemView) {

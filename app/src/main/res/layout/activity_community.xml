@@ -11,26 +11,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="#666"
         >
         <com.google.android.material.tabs.TabLayout
-            android:layout_weight="2"
+            android:layout_weight="4"
             android:id="@+id/community_tb"
             android:background="#666"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:tabTextColor="#000"
             app:tabMode="fixed"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+
             app:tabIndicatorHeight="4dp"
             app:tabIndicatorColor="#777"
             app:tabSelectedTextColor="#FFF"
             />
 
         <TextView
-            android:layout_weight="1"
+            android:layout_weight="5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#222"
+        />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/community_vp"

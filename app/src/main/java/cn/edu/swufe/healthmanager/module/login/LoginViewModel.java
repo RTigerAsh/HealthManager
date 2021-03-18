@@ -82,6 +82,7 @@ public class LoginViewModel  extends ViewModel {
                 InputStream in = response.body().byteStream();
                 Bitmap captchaImg = BitmapFactory.decodeStream(in);
                 ServerResult<Bitmap> bitmapServerResult = new ServerResult<>();
+                bitmapServerResult.setSuccess(true);
                 bitmapServerResult.setData(captchaImg);
                 resultCaptchaGraph.postValue(bitmapServerResult);
             }

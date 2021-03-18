@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import cn.edu.swufe.healthmanager.R;
-import cn.edu.swufe.healthmanager.module.community.cmmunityFragments.OtherFragment;
+import cn.edu.swufe.healthmanager.model.entities.Category;
 
 public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.MyViewHolder> {
     private  ClickListener clickListener;
     Context context;
-    private List<String> categoryList;
+    private List<Category> categoryList;
 
-    public CategoryRecyclerViewAdapter(Context context, List<String> categoryList){
+    public CategoryRecyclerViewAdapter(Context context, List<Category> categoryList){
         this.context = context;
         this.categoryList =categoryList;
     }
@@ -54,7 +53,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         if(categoryList != null && categoryList.size() > position){
-            holder.categoryName.setText(categoryList.get(position) + position);
+            holder.categoryName.setText(categoryList.get(position).getName());
 
         }
 

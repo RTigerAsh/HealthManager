@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -34,8 +36,7 @@ public class CommunityActivity extends AppCompatActivity{
 
         tabLayout = findViewById(R.id.community_tb);
         tabLayout.setupWithViewPager(viewPager);
-
-
+        Fresco.initialize(this);
 
     }
 

@@ -19,7 +19,9 @@
 
 
         </activity>
-        <activity android:name=".TestActivity" />
+        <activity android:name=".TestActivity" >
+
+        </activity>
         <activity
             android:name=".Welcome.WelcomeGuideActivity"
             android:label="@string/title_activity_welcome_guide"

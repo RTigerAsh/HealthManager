@@ -5,7 +5,13 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.List;
+
 import cn.edu.swufe.healthmanager.model.ServerResult;
+import cn.edu.swufe.healthmanager.model.entities.Category;
 import cn.edu.swufe.healthmanager.util.JsonUtil;
 import cn.edu.swufe.healthmanager.util.OkHttpCallback;
 import cn.edu.swufe.healthmanager.util.OkHttpUtils;
@@ -23,11 +29,19 @@ public class OtherViewModel extends ViewModel {
             "\"labels\": \"%s\"\n" +
             "}";
 
+    // 上传数据
     private MutableLiveData<ServerResult> uploadResult = new MutableLiveData<>();
+
+    // 请求分类列表
+    private MutableLiveData<ServerResult<List<Category>>> requestCategoryListResult = new MutableLiveData<>();
 
 
     public MutableLiveData<ServerResult> getUploadResult() {
         return uploadResult;
+    }
+
+    public MutableLiveData<ServerResult<List<Category>>> getRequestCategoryListResult() {
+        return requestCategoryListResult;
     }
 
     public void uploadQuestion(String categoryId, String content, String label, String tokenKey) {
@@ -56,5 +70,16 @@ public class OtherViewModel extends ViewModel {
     }
 
     // TODO：从服务器获得类别，标签选项
+    public void getCategory(){
+        // 1. 构建URL
+        HttpUrl httpUrl = UrlUtil.getCategoryListUrl();
+
+        // 2. 发出请求，解析结果
+        Type rltType = new TypeToken<ServerResult<List<Category>>>(){}.getType();
+
+        OkHttpUtils.get_test(httpUrl, requestCategoryListResult, rltType);
+
+    }
+
     // TODO: 输入文本检测
 }
