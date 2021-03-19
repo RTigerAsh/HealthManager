@@ -1,4 +1,4 @@
-package cn.edu.swufe.healthmanager.module.community;
+package cn.edu.swufe.healthmanager.module.community.Adapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

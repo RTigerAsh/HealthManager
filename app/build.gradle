@@ -44,9 +44,9 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     // 第三方下拉刷新
-    implementation  'com.scwang.smart:refresh-header-classics:2.0.3'
-    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.3'
-    implementation  'com.scwang.smart:refresh-footer-classics:2.0.3'
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.3'
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.3'
+    implementation 'com.scwang.smart:refresh-footer-classics:2.0.3'
 
     // Facebook图片加载
     implementation 'com.facebook.fresco:fresco:2.4.0'

@@ -1,18 +1,16 @@
 package cn.edu.swufe.healthmanager.module.community.cmmunityFragments;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,26 +20,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
-import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
 import cn.edu.swufe.healthmanager.model.LoginUser;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.QuestionEntity;
-import cn.edu.swufe.healthmanager.module.community.QuestionRecyclerViewAdapter;
+import cn.edu.swufe.healthmanager.module.community.IClickListener;
+import cn.edu.swufe.healthmanager.module.community.QuestionAddActivity;
+import cn.edu.swufe.healthmanager.module.community.QuestionDetailActivity;
+import cn.edu.swufe.healthmanager.module.community.Adapters.QuestionRecyclerViewAdapter;
 import cn.edu.swufe.healthmanager.module.community.SpaceItemDecoration;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
@@ -57,17 +53,13 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private RecyclerView recyclerView;
     private RefreshLayout refreshLayout;
 
+
     // 记录当前用户查看的页数
     private volatile int page = 0;
-
-    // 获得token
-    private String tokenKey = LoginUser.getInstance().getUserEntity().getTokenKey();
 
 
     private List<QuestionEntity> questionEntityList = new ArrayList<>();
 
-    // 以Map的形式存储图片，减少重复的图片请求
-    private Map<String, Bitmap> userAvatarsMap = new HashMap<>();
 
     private QuestionRecyclerViewAdapter questionRecyclerViewAdapter;
 
@@ -102,7 +94,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                mViewModel.getQuestionList(++page, Configs.PAGE_SIZE, tokenKey);
+                mViewModel.getQuestionList(++page, Configs.PAGE_SIZE);
 
 
             }
@@ -110,7 +102,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 page = 0;
-                mViewModel.getQuestionList(page, Configs.PAGE_SIZE, tokenKey);
+                mViewModel.getQuestionList(page, Configs.PAGE_SIZE);
             }
         });
     }
@@ -119,6 +111,25 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private void initRecyclerView() {
         recyclerView = view.findViewById(R.id.community_recycle_view);
         questionRecyclerViewAdapter = new QuestionRecyclerViewAdapter(getActivity(), questionEntityList);
+        questionRecyclerViewAdapter.setClickListener(new IClickListener() {
+
+
+            @Override
+            public void onItemClick(int position, View v) {
+                QuestionEntity currentQuestion = questionEntityList.get(position);
+
+                // 启动新的activity
+                Intent intent = new Intent(getActivity(), QuestionDetailActivity.class);
+
+                intent.putExtra("questionId", currentQuestion.getId());
+                intent.putExtra("userAvatar", currentQuestion.getUserAvatar());
+                intent.putExtra("userName", currentQuestion.getUserName());
+                intent.putExtra("questionContent", currentQuestion.getContent());
+                intent.putExtra("questionCreateTime", currentQuestion.getCreateTime().getTime());
+                startActivity(intent);
+
+            }
+        });
 
         // 设置产生的item的布局方向
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -138,7 +149,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         Log.i(TAG,"GetLoginTokenKey: " + LoginUser.getInstance().getUserEntity().getTokenKey());
 
-        mViewModel.getQuestionList(page, Configs.PAGE_SIZE, tokenKey);
+        mViewModel.getQuestionList(page, Configs.PAGE_SIZE);
 
         mViewModel.getRequestResult().observe(this, new Observer<ServerResult<List<QuestionEntity>>>() {
             @Override
@@ -174,7 +185,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 }
 
 
-
             }
         });
     }
@@ -189,8 +199,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.community_add_bt:
-                DialogFragment dialogFragment = new OtherFragment();
-                dialogFragment.show(getFragmentManager(), "dialog");
+
+                Intent intent = new Intent(getActivity(), QuestionAddActivity.class);
+                startActivity(intent);
 
         }
 

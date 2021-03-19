@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -33,8 +32,6 @@
 
 </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
-
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_gravity="bottom|end"
             android:clickable="true"
@@ -51,6 +48,4 @@
             />
 
 
-
-<!--    </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

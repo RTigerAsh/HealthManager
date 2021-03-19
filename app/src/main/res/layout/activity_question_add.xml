@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/question_back_imb"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_back"
+            />
+        <ImageButton
+            android:id="@+id/question_commit_imb"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_back"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:id="@+id/community_other_ly"
+        >
+        <TextView
+            android:id="@+id/question_title_tv"
+            android:hint="请选择类别"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColorHint="#FFF"
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <View
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#444"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:id="@+id/community_category_rv"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#444"
+            />
+
+        <EditText
+            android:background="@drawable/edit_text_corner"
+            android:id="@+id/question_content_et"
+            android:layout_weight="1"
+            android:hint="请输入内容"
+            android:gravity="left|top"
+            android:textColorHint="#FFF"
+            android:textSize="16sp"
+            android:textColor="#FFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:layout_marginBottom="10dp"
+            android:id="@+id/question_label_et"
+            android:hint="请输入标签"
+            android:gravity="left|top"
+            android:textColorHint="#FFF"
+            android:textSize="16sp"
+            android:textColor="#FFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

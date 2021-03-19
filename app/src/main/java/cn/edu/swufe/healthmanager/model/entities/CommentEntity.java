@@ -2,8 +2,11 @@ package cn.edu.swufe.healthmanager.model.entities;
 
 import java.util.Date;
 
-public class QuestionEntity {
+public class CommentEntity {
     private String id;
+
+    // question id，根据需要，可扩充为父内容id
+    private String uccId;
 
     private String userId;
 
@@ -11,19 +14,12 @@ public class QuestionEntity {
 
     private String userName;
 
-    private String categoryId;
-
     private String state;
-
-    private String labels;
 
     private String content;
 
-    private Integer viewCount;
-
-    private Date updateTime;
-
     private Date createTime;
+
 
     public String getId() {
         return id;
@@ -31,6 +27,14 @@ public class QuestionEntity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUccId() {
+        return uccId;
+    }
+
+    public void setUccId(String uccId) {
+        this.uccId = uccId;
     }
 
     public String getUserId() {
@@ -57,14 +61,6 @@ public class QuestionEntity {
         this.userName = userName;
     }
 
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
     public String getState() {
         return state;
     }
@@ -73,36 +69,12 @@ public class QuestionEntity {
         this.state = state;
     }
 
-    public String getLabels() {
-        return labels;
-    }
-
-    public void setLabels(String labels) {
-        this.labels = labels;
-    }
-
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Integer getViewCount() {
-        return viewCount;
-    }
-
-    public void setViewCount(Integer viewCount) {
-        this.viewCount = viewCount;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 
     public Date getCreateTime() {

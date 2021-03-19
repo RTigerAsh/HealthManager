@@ -1,4 +1,4 @@
-package cn.edu.swufe.healthmanager.module.community.cmmunityFragments;
+package cn.edu.swufe.healthmanager.module.community;
 
 import android.util.Log;
 
@@ -20,7 +20,7 @@ import cn.edu.swufe.healthmanager.util.UrlUtil;
 import okhttp3.HttpUrl;
 
 
-public class OtherViewModel extends ViewModel {
+public class QuestionAddViewModel extends ViewModel {
     private final String TAG = this.getClass().getSimpleName();
 
     private String jsonStr = "{\n" +

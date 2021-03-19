@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.tabs.TabLayout;
@@ -14,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.swufe.healthmanager.R;
+import cn.edu.swufe.healthmanager.module.community.Adapters.CommunityPagerAdapter;
 import cn.edu.swufe.healthmanager.module.community.cmmunityFragments.MainFragment;
 import cn.edu.swufe.healthmanager.module.community.cmmunityFragments.MineFragment;
 

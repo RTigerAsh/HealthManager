@@ -27,9 +27,9 @@ public class MainViewModel extends ViewModel {
         return requestResult;
     }
 
-    public void getQuestionList(int page, int size, String tokenKey) {
+    public void getQuestionList(int page, int size) {
         // 1. 构建url
-        String url = String.format(RequsestApi.URL_GET_QUESTION_LIST, page, size, tokenKey);
+        String url = String.format(RequsestApi.URL_GET_QUESTION_LIST, page, size);
 
         // 2. 发出get请求
         OkHttpUtils.get(url, new OkHttpCallback(){

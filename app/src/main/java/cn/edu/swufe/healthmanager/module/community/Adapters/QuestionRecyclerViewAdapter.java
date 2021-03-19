@@ -1,11 +1,10 @@
-package cn.edu.swufe.healthmanager.module.community;
+package cn.edu.swufe.healthmanager.module.community.Adapters;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,10 +17,12 @@ import java.util.List;
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
 import cn.edu.swufe.healthmanager.model.entities.QuestionEntity;
+import cn.edu.swufe.healthmanager.module.community.IClickListener;
 import cn.edu.swufe.healthmanager.util.DateUtil;
 import cn.edu.swufe.healthmanager.util.UrlUtil;
 
 public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRecyclerViewAdapter.MyHolder> {
+    private IClickListener clickListener;
 
     Context context;
     private List<QuestionEntity> questionEntities;
@@ -57,12 +58,16 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
         }
     }
 
+    public void setClickListener(IClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
     @Override
     public int getItemCount() {
         return questionEntities == null || questionEntities.size()==0 ? Configs.DEFAULT_SIZE : questionEntities.size();
     }
 
-    class MyHolder extends RecyclerView.ViewHolder {
+    class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private SimpleDraweeView iv_userAvatar;
         private TextView tv_userName, tv_updateTime, tv_content, tv_tag, tv_viewCount;
@@ -77,6 +82,14 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
             tv_tag = itemView.findViewById(R.id.community_tag_tv);
             tv_viewCount = itemView.findViewById(R.id.community_view_count_tv);
 
+            tv_content.setOnClickListener(this);
+
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onItemClick(getAdapterPosition(), v);
         }
     }
 }

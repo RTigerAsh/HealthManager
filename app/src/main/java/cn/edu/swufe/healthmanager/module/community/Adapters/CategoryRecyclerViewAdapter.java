@@ -1,4 +1,4 @@
-package cn.edu.swufe.healthmanager.module.community;
+package cn.edu.swufe.healthmanager.module.community.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,9 +13,10 @@ import java.util.List;
 
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.model.entities.Category;
+import cn.edu.swufe.healthmanager.module.community.IClickListener;
 
 public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.MyViewHolder> {
-    private  ClickListener clickListener;
+    private IClickListener clickListener;
     Context context;
     private List<Category> categoryList;
 
@@ -64,12 +65,8 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         return categoryList == null || categoryList.size()==0 ? 5: categoryList.size();
     }
 
-    public  void setClickListener(ClickListener clickListener) {
+    public  void setClickListener(IClickListener clickListener) {
         this.clickListener = clickListener;
-    }
-
-    public interface ClickListener{
-        void onItemClick(int position, View v);
     }
 
 

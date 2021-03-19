@@ -19,7 +19,7 @@ public class RequsestApi {
     public static final String URL_POST_QUESTION = "http://" + Configs.SERVER_AD + "/user/article?tokenKey=%s";
 
     // 请求问题列表(传入page，size，tokenKey)
-    public static final String URL_GET_QUESTION_LIST = "http://" + Configs.SERVER_AD + "/user/article/list/%s/%s?token_key=%s";
+    public static final String URL_GET_QUESTION_LIST = "http://" + Configs.SERVER_AD + "/user/article/list/%s/%s";
 
 
 
