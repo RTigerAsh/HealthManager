@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import cn.edu.swufe.healthmanager.R;
@@ -28,13 +29,14 @@ import org.litepal.LitePal;
 import java.util.List;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    private EditText et_name,et_password;
+    private EditText et_name,et_password, et_captcha;
     private Button login;
-    private ImageView iv_eye,iv_more_account;
+    private ImageView iv_eye,iv_more_account, iv_captcha;
     private CheckBox cb_remember;
     private boolean passwordVisible = false;
     private ToastUtils toastUtils = new ToastUtils();
     private TextView register;
+    private LinearLayout ly_captcha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         register = (TextView) findViewById(R.id.register);
         et_name = (EditText) findViewById(R.id.et_account_name);
         et_password = (EditText) findViewById(R.id.et_password);
+        et_captcha = (EditText) findViewById(R.id.et_captcha);
         iv_eye = (ImageView) findViewById(R.id.iv_eye);
         iv_more_account = (ImageView) findViewById(R.id.iv_more_accout);
         cb_remember = (CheckBox) findViewById(R.id.cb_remember);
+        iv_captcha = findViewById(R.id.iv_captcha);
+        ly_captcha = findViewById(R.id.ly_captcha);
+
 
 
         //设置监听器
@@ -169,5 +175,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
     }
+
 
 }
