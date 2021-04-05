@@ -33,6 +33,8 @@ public class QuestionDetailActivity extends AppCompatActivity implements View.On
     private ImageButton question_detail_back_imb;
     private QuestionDetailRecyclerViewAdapter questionDetailRecyclerViewAdapter;
 
+    //TODO：评论的上传，上传后页面的刷新
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

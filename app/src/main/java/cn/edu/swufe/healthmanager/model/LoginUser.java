@@ -8,7 +8,8 @@ public class LoginUser {
 
     private  UserEntity userEntity;
 
-    private static LoginUser instance;
+    // 写直达，保证任何线程中的该对象都为最新
+    private static volatile LoginUser instance;
 
     // 此类无法被实例化
     private LoginUser(){}
@@ -16,6 +17,7 @@ public class LoginUser {
     public static LoginUser getInstance(){
         // 保证线程安全
         if(instance == null){
+            // 设置在内部，保证效率
             synchronized (LoginUser.class){
                 if(instance == null){
                     instance = new LoginUser();
