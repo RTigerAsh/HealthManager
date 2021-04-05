@@ -1,163 +1,385 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray5">
+    >
 
-<!--    顶部方框信息栏head-->
     <LinearLayout
-        android:id="@+id/head"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/item_margin_left_and_right"
-        android:layout_marginRight="@dimen/item_margin_left_and_right">
-
-        <!--    顶部设置栏-->
+        >
+        <!--    顶部方框信息栏head-->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end">
-
-            <ImageView
-                android:id="@+id/setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_settings"/>
-        </LinearLayout>
-
-<!--        个人信息栏info-->
-        <LinearLayout
-            android:id="@+id/info"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="@dimen/option_item_margin_top"
-            android:gravity="center_vertical">
-
-            <cn.edu.swufe.healthmanager.widget.RoundImageView
-                android:id="@+id/portrait"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="@dimen/option_item_margin_right"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/default_header"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="140px"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/info_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="6px"
-                    android:singleLine="true"
-                    android:text="@string/my_name"
-                    android:textColor="@color/gray0"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/info_account"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6px"
-                    android:singleLine="true"
-                    android:text="@string/my_account"
-                    android:textColor="@color/gray2"
-                    android:textSize="10dp"/>
-
-            </LinearLayout>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arrow_forward"/>
-
-        </LinearLayout>
-
-<!--        关注、粉丝、收藏、最近浏览栏items-->
-        <LinearLayout
-            android:id="@+id/items"
+            android:id="@+id/head"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:orientation="vertical"
 
+            >
+            <!--    顶部蓝色区-->
             <LinearLayout
-                android:layout_width="0dp"
+                android:background="@color/main"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                >
+                <!--    顶部设置栏-->
+                <LinearLayout
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end">
+
+                    <ImageView
+                        android:id="@+id/setting"
+                        android:paddingRight="15sp"
+                        android:paddingTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_settings_white"/>
+                </LinearLayout>
+
+                <!--        个人信息栏info-->
+                <LinearLayout
+
+                    android:id="@+id/info"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/option_item_margin_top"
+                    android:paddingBottom="20dp"
+                    android:gravity="center_vertical">
+
+                    <cn.edu.swufe.healthmanager.util.widget.RoundImageView
+                        android:id="@+id/portrait"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="@dimen/option_item_margin_right"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/default_header"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="140px"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/info_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6px"
+                            android:singleLine="true"
+                            android:text="@string/my_name"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/info_account"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6px"
+                            android:singleLine="true"
+                            android:text="@string/my_account"
+                            android:textColor="@color/assist_yellow"
+                            android:textSize="10dp"/>
+
+                    </LinearLayout>
+                    <ImageView
+                        android:paddingRight="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/arrow_forward"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <!--        我的求助、已打卡、、items-->
+            <LinearLayout
+                android:id="@+id/items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bmi_bg"
+                android:layout_marginLeft="@dimen/item_margin_left_and_right"
+                android:layout_marginRight="@dimen/item_margin_left_and_right"
+                android:layout_marginTop="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的求助" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1天" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已打卡" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/my_item3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/my_item4" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--    个人信息栏body-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="@dimen/item_margin_left_and_right"
+            android:layout_marginRight="@dimen/item_margin_left_and_right"
+            android:background="@drawable/bmi_bg"
+            android:orientation="vertical">
+
+            <!-- 我的健康资料 title-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0" />
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="我的健康资料"
+                    android:textColor="@color/black1"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:layout_gravity="center"
+                    android:background="@color/gray9"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- 基本信息 -->
+            <LinearLayout
+                android:id="@+id/perinfo_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/perinfo_message" />
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_item1" />
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/arrow_forward"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:text="基本信息"
+                    android:textColor="@color/black1"
+                    android:textSize="15sp" />
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:layout_gravity="center"
+                    android:background="@color/gray9"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- 健康报告-->
+            <LinearLayout
+                android:id="@+id/perinfo_healthreport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/perinfo_health" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_item2" />
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/arrow_forward"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:text="健康报告"
+                    android:textColor="@color/black1"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_item3" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:layout_gravity="center"
+                    android:background="@color/gray9"
+                    android:gravity="center" />
             </LinearLayout>
+
+            <!--&lt;!&ndash; 饮食方案&ndash;&gt;-->
+            <!--<LinearLayout-->
+                <!--android:id="@+id/perinfo_food"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp">-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="30dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/perinfo_food" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:drawableRight="@drawable/arrow_forward"-->
+                    <!--android:paddingLeft="10dp"-->
+                    <!--android:paddingTop="20dp"-->
+                    <!--android:paddingBottom="20dp"-->
+                    <!--android:text="饮食方案"-->
+                    <!--android:textColor="@color/black1"-->
+                    <!--android:textSize="15sp" />-->
+            <!--</LinearLayout>-->
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_item4" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:layout_gravity="center"
+                    android:background="@color/gray9"
+                    android:gravity="center" />
             </LinearLayout>
+
+            <!-- 体重管理小结-->
+            <LinearLayout
+                android:id="@+id/perinfo_weekweight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/perinfo_week" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/arrow_forward"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="10dp"
+                    android:text="上周体重管理小结"
+                    android:textColor="@color/black1"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

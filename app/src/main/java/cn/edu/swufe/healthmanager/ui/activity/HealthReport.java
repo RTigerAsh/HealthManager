@@ -7,12 +7,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.litepal.LitePal;
-
 import androidx.appcompat.app.AppCompatActivity;
-import cn.edu.swufe.healthmanager.MainActivity;
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.db.model.User;
+import cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity;
 import cn.edu.swufe.healthmanager.util.ActivityCollector;
 import cn.edu.swufe.healthmanager.util.BMIView;
 import cn.edu.swufe.healthmanager.util.BmiUtil;
@@ -56,17 +54,27 @@ public class HealthReport extends AppCompatActivity implements View.OnClickListe
     }
     public void initData(){
         user = find(User.class, 1);
-        gender=user.getGender();
-        height=user.getHeight();
-        weight=user.getWeight();
-        aim_weight=user.getAim_weight();
+        System.out.println("来自健康报告页面的信息 user：   "+user);
+        if (user.getGender().equals("男")){
+            this.gender="0";
+        }else if (user.getGender().equals("女")){
+            this.gender="1";
+        }else if (user.getGender().equals("保密")){
+            this.gender="0";
+        }else {
+            this.gender=user.getGender();
+        }
 
-        bmi= bmiUtil.getBmi(weight,height/100);
-        bmr= bmiUtil.getBMR(weight,height/100,gender,20);
-        min_weight=bmiUtil.getMinWeight(height/100,gender);
-        max_weight=bmiUtil.getMaxWeight(height/100,gender);
+        this.height=user.getHeight();
+        this.weight=user.getWeight();
+        this.aim_weight=user.getAim_weight();
 
-        System.out.println("gender"+gender+"height"+height+"weight"+weight+"aim_weight"+aim_weight+"bmi"+bmi+"bmr"+bmr+"min_weight"+min_weight);
+        this.bmi= bmiUtil.getBmi(weight,height/100);
+        this.bmr= bmiUtil.getBMR(weight,height/100,gender,20);
+        this.min_weight=bmiUtil.getMinWeight(height/100,gender);
+        this.max_weight=bmiUtil.getMaxWeight(height/100,gender);
+
+        System.out.println("gender: "+gender+",height: "+height+",weight: "+weight+",aim_weight: "+aim_weight+",bmi: "+bmi+",bmr: "+bmr+",min_weight: "+min_weight);
 
 
     }

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -16,11 +15,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import cn.edu.swufe.healthmanager.MainActivity;
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.db.LoginUser;
 import cn.edu.swufe.healthmanager.db.model.User;
 import cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.GetBaseData;
+import cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity;
 import cn.edu.swufe.healthmanager.util.ActivityCollector;
 import cn.edu.swufe.healthmanager.util.MD5;
 import cn.edu.swufe.healthmanager.util.ToastUtils;
@@ -136,7 +135,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     LoginUser.getInstance().login(user);
 
                     //第一次注册的用户登录跳转到基础信息获取页面
-                    if(getIntent().getBooleanExtra("first_register",true)) {
+                    if(!getIntent().getBooleanExtra("first_register",false)) {
                         Log.d("health","first_register");
                         Intent intent1 = new Intent(Login.this, GetBaseData.class);
                         startActivity(intent1);

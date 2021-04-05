@@ -39,8 +39,8 @@ public class Fragment4_end extends Fragment implements View.OnClickListener {
 
 
     private ToastUtils toastUtils = new ToastUtils();
-    private GetBaseData getBaseData = (GetBaseData) getActivity();
 
+    private GetBaseData getBaseData = (GetBaseData) getActivity();
     // 使用listview设置多选
     private java.util.List<Map<String, Object>> mList ;//特殊情况
     private ListView listView;
@@ -53,6 +53,7 @@ public class Fragment4_end extends Fragment implements View.OnClickListener {
         getBaseData = (GetBaseData) getActivity();
         super.onAttach(context);
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {

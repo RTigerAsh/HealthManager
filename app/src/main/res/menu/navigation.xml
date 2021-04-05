@@ -3,13 +3,21 @@
 
     <item
         android:id="@+id/navigation_mainpage"
-        android:icon="@drawable/ic_border_outer_black_48dp"
+        android:icon="@drawable/home"
         android:title="@string/title_mainpage" />
+    <item
+        android:id="@+id/navigation_message"
+        android:icon="@drawable/chat"
+        android:title="问答"  />
+    <item
+        android:id="@+id/navigation_center"
+        android:icon="@null"
+        android:title=""  />
 
     <item
-        android:id="@+id/navigation_adddata"
-        android:icon="@drawable/ic_add_circle_outline_black_48dp"
-        android:title="@string/title_adddata" />
+        android:id="@+id/navigation_shop"
+        android:icon="@drawable/copy"
+        android:title="方案" />
 
     <!--<item-->
         <!--android:id="@+id/navigation_market"-->
@@ -17,6 +25,6 @@
         <!--android:title="@string/title_market" />-->
     <item
         android:id="@+id/navigation_setting"
-        android:icon="@drawable/ic_content_copy_black_48dp"
+        android:icon="@drawable/admin"
         android:title="@string/title_setting" />
 </menu>

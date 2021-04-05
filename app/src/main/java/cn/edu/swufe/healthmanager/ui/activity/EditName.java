@@ -2,19 +2,14 @@ package cn.edu.swufe.healthmanager.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.opengl.ETC1;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.db.LoginUser;
 import cn.edu.swufe.healthmanager.util.ActivityCollector;
-import cn.edu.swufe.healthmanager.widget.TitleLayout;
+import cn.edu.swufe.healthmanager.util.widget.TitleLayout;
 
 public class EditName extends AppCompatActivity {
     private LoginUser loginUser = LoginUser.getInstance();

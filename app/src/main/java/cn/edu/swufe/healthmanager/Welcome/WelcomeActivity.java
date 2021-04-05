@@ -22,7 +22,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
-import cn.edu.swufe.healthmanager.MainActivity;
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
 import cn.edu.swufe.healthmanager.common.RequsestApi;

@@ -47,7 +47,7 @@ public class BMIView extends View {
     private void init(Context context, AttributeSet attrs) {
         // 读取自定义属性，没有设置的话，就设置为默认值。
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.BMIView);
-        String titleStr = array.getString(R.styleable.BMIView_title);
+        String titleStr = array.getString(R.styleable.BMIView_BMIViewtitle);
         if (titleStr != null) {
             title = titleStr;
         } else {
@@ -91,9 +91,9 @@ public class BMIView extends View {
         minVal = array.getInteger(R.styleable.BMIView_minVal, 0);
         maxVal = array.getInteger(R.styleable.BMIView_maxVal, 400);
 
-        leftColor = array.getColor(R.styleable.BMIView_leftColor, Color.argb(255, 246, 174, 3));
-        midColor = array.getColor(R.styleable.BMIView_midColor, Color.argb(255, 31, 156, 13));
-        rightColor = array.getColor(R.styleable.BMIView_rightColor, Color.argb(255, 255, 63, 66));
+        leftColor = array.getColor(R.styleable.BMIView_BMIViewleftColor, Color.argb(255, 246, 174, 3));
+        midColor = array.getColor(R.styleable.BMIView_BMIViewmidColor, Color.argb(255, 31, 156, 13));
+        rightColor = array.getColor(R.styleable.BMIView_BMIViewrightColor, Color.argb(255, 255, 63, 66));
 
         normalTextColor = array.getColor(R.styleable.BMIView_normalTextColor, Color.GRAY);
 

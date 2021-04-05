@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.hjq.bar.TitleBar
+        android:id="@+id/TitleBar_showsport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#65c8b3"
+        app:title="运动记录"
+        app:titleStyle="bold"
+        app:titleColor="@color/white"/>
+
+    <ExpandableListView
+        android:layout_below="@+id/TitleBar_showsport"
+        android:id="@+id/expand_list_showsport"
+        android:layout_width="match_parent"
+        android:groupIndicator="@null"
+        android:layout_height="match_parent">
+    </ExpandableListView>
+
+</RelativeLayout>

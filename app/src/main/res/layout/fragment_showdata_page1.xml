@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collsping_Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#03A9F4"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentScrim="#65c8b3"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <!--指定标题栏的具体内容-->
+            <ImageView
+                android:id="@+id/fruit_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@color/gray5"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin">
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <com.hjq.bar.TitleBar
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+
+                app:barStyle="ripple"
+                app:backButton="false"
+                app:title="主页"
+                app:titleSize="20dp"
+                app:layout_collapseMode="pin" />
+
+            <!--放入运动步数或者已消耗千卡控件-->
+            <cn.edu.swufe.healthmanager.util.stepview.ArcView
+                android:layout_height="150dp"
+                android:layout_width="200dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:id="@+id/arcView"
+                />
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--内容详情-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!--主体布局-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                app:cardCornerRadius="4dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!--健康记录标题-->
+                    <LinearLayout
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="8dip"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.2"
+                            android:background="@color/gray5"
+                            android:gravity="center"/>
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="18dp"
+                            android:paddingLeft="8dp"
+                            android:textColor="@color/black0"
+                            android:text="我的健康记录"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="6"
+                            android:layout_height="wrap_content" />
+                        <Button
+                            android:id="@+id/btn_daka_mainfrag1"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_shape"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:text="打卡0/1"/>
+                    </LinearLayout>
+                    <!--热量展示-->
+                    <LinearLayout
+                        android:id="@+id/layout_food_mainfrag1"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:paddingLeft="8dp"
+                                android:text="饮食"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:paddingTop="18dp"
+                                android:paddingLeft="8dp"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:text="已经摄入"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/tv_food_mainfrag1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1980"
+                                    android:textColor="@color/black0"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:text="千卡"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                <!--放自定义数据展示表控件-->
+                        <cn.edu.swufe.healthmanager.util.echartview.EchartView
+                            android:id="@+id/barChart_food_mainfrag1"
+                            android:layout_marginRight="15dp"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center">
+                        </cn.edu.swufe.healthmanager.util.echartview.EchartView>
+            </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:layout_gravity="center"
+                        android:background="@color/gray5"
+                        android:gravity="center"
+                        />
+
+                    <!--运动展示-->
+                    <LinearLayout
+                        android:id="@+id/layout_sport_mainfrag1"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:paddingLeft="8dp"
+                                android:text="运动"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:paddingTop="18dp"
+                                android:paddingLeft="8dp"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:text="已经消耗"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/tv_sport_mainfrag1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1378"
+                                    android:textColor="@color/black0"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:text="千卡"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!--放自定义数据展示表控件-->
+                        <cn.edu.swufe.healthmanager.util.echartview.EchartView
+                            android:id="@+id/barChart_sport_mainfrag1"
+                            android:layout_marginRight="15dp"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center">
+                        </cn.edu.swufe.healthmanager.util.echartview.EchartView>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:layout_gravity="center"
+                        android:background="@color/gray5"
+                        android:gravity="center"
+                        />
+
+                    <!--睡眠展示-->
+                    <LinearLayout
+                        android:id="@+id/layout_sleep_mainfrag1"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:paddingLeft="8dp"
+                                android:text="睡眠"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:paddingTop="18dp"
+                                android:paddingLeft="8dp"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:text="睡眠平均时长"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/tv_sleep_mainfrag1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="正常"
+                                    android:textColor="@color/black0"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--放自定义数据展示表控件-->
+                        <cn.edu.swufe.healthmanager.util.echartview.EchartView
+                            android:id="@+id/lineChart_sleep_mainfrag1"
+                            android:layout_marginRight="15dp"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center">
+                        </cn.edu.swufe.healthmanager.util.echartview.EchartView>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dip"
+                        android:layout_gravity="center"
+                        android:background="@color/gray5"
+                        android:gravity="center"
+                        />
+
+                    <!--体重展示-->
+                    <LinearLayout
+                        android:id="@+id/layout_weight_mainfrag1"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:paddingLeft="8dp"
+                                android:text="体重"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:paddingTop="18dp"
+                                android:paddingLeft="8dp"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_weight_mainfrag1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="74.5"
+                                    android:textColor="@color/black0"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:text="公斤"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!--放自定义数据展示表控件-->
+                        <cn.edu.swufe.healthmanager.util.echartview.EchartView
+                            android:id="@+id/lineChart_weight_mainfrag1"
+                            android:layout_marginRight="15dp"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center">
+                        </cn.edu.swufe.healthmanager.util.echartview.EchartView>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                app:cardCornerRadius="4dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+            <!--健康方案标题-->
+                    <LinearLayout
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="8dip"
+                        android:layout_height="25dp"
+                        android:layout_weight="0.2"
+                        android:background="@color/gray5"
+                        android:gravity="center"/>
+                    <TextView
+                        android:layout_marginRight="10dp"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:paddingLeft="8dp"
+                        android:textColor="@color/black0"
+                        android:text="我的健康方案"
+
+                        android:layout_width="wrap_content"
+                        android:layout_weight="6"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                    <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人体内免疫系统和组织器官的自然屏障均由蛋白质和氨基酸构成，建议日常饮食保证优质蛋白质的摄入"/>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/gray5"
+                    android:gravity="center"/>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black0"
+                        android:textStyle="bold"
+                        android:gravity="left"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="大豆类"/>
+                    <TextView
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="黑豆，黄豆"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black0"
+                        android:textStyle="bold"
+                        android:gravity="left"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="豆制品"/>
+                    <TextView
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="豆浆，豆腐"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black0"
+                        android:textStyle="bold"
+                        android:gravity="left"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="蛋类"/>
+                    <TextView
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="鸡蛋，鸭蛋，鹌鹑蛋"/>
+                </LinearLayout>
+            </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

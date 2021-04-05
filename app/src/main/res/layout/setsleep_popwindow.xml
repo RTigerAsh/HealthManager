@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="480dp"
+    android:layout_alignParentBottom="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bmi_bg"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/set_sleep_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/bmi_bg_top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_setsleep_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:gravity="right"
+            android:text="取消" />
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/zzz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_setsleep_zong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingBottom="30dp"
+            android:text="睡眠时长： 9.0小时" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--昨日入睡时间-->
+            <LinearLayout
+                android:padding="10dp"
+                android:id="@+id/seleep_start_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="15dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="昨日入睡时间："/>
+
+                <TextView
+                    android:id="@+id/tv_seleep_start"
+                    android:paddingLeft="10dp"
+                    android:layout_weight="1"
+                    android:textSize="18dp"
+                    android:textColor="@color/black0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="22时30分"
+                    android:drawableRight="@drawable/arrow_forward"/>
+
+            </LinearLayout>
+            <!--起床时间-->
+            <LinearLayout
+                android:padding="10dp"
+                android:id="@+id/seleep_stop_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:paddingLeft="10dp"
+                    android:textSize="15dp"
+                    android:textColor="@color/black0"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="今日起床时间："/>
+
+                <TextView
+                    android:id="@+id/tv_seleep_stop"
+                    android:paddingLeft="10dp"
+                    android:layout_weight="1"
+                    android:textSize="18dp"
+                    android:textColor="@color/black0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="07时30分"
+                    android:drawableRight="@drawable/arrow_forward"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+        <Button
+            android:id="@+id/btn_setsleep_save"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_drawable_gray"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+    </LinearLayout>
+</RelativeLayout>

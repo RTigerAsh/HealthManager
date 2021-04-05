@@ -193,4 +193,32 @@ public class User extends LitePalSupport implements Comparable<User> {
     public void setSpecial_disease_List(ArrayList<String> special_disease_List) {
         Special_disease_List = special_disease_List;
     }
+
+    public List<DairyBodyMessage> getDairybodymessageList() {
+        return dairybodymessageList;
+    }
+
+    public void setDairybodymessageList(List<DairyBodyMessage> dairybodymessageList) {
+        this.dairybodymessageList = dairybodymessageList;
+    }
+
+    public List<DairySportsMessage> getDairysportsmessageList() {
+        return dairysportsmessageList;
+    }
+
+    public void setDairysportsmessageList(List<DairySportsMessage> dairysportsmessageList) {
+        this.dairysportsmessageList = dairysportsmessageList;
+    }
+
+    public List<DairyFoodMessage> getDairyfoodmessageList() {
+        return dairyfoodmessageList;
+    }
+
+    public void setDairyfoodmessageList(List<DairyFoodMessage> dairyfoodmessageList) {
+        this.dairyfoodmessageList = dairyfoodmessageList;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
