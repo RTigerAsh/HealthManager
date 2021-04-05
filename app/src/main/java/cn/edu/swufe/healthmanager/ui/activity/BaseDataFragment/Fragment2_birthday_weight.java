@@ -18,7 +18,7 @@ import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.util.ToastUtils;
 import cn.edu.swufe.healthmanager.util.slidingruleview.SlidingRuleView_Kg;
 
-public class Fragment2_birthday_weight extends Fragment implements View.OnClickListener{
+public class Fragment2_birthday_weight extends Fragment implements View.OnClickListener, DatePicker.OnDateChangedListener {
 
 
     private Button bt;
@@ -45,7 +45,10 @@ public class Fragment2_birthday_weight extends Fragment implements View.OnClickL
 
         bt = (Button)view.findViewById(R.id.button_getbasedata_2);
         srv=(SlidingRuleView_Kg)view.findViewById(R.id.slidView_kg_getbasedata);
+
         dp_birthday = (DatePicker)view.findViewById(R.id.dp_dickdate);
+
+        dp_birthday.init(1999, 5, 23,this);
         hideDatePickerHeader(dp_birthday);
 
         bt.setOnClickListener(this);
@@ -105,5 +108,10 @@ public class Fragment2_birthday_weight extends Fragment implements View.OnClickL
         if (headerId == headerView.getId()) {
             headerView.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
     }
 }

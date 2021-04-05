@@ -50,8 +50,8 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_showdata_page1, container, false);
         arcView=view.findViewById(R.id.arcView);
-        zong=1350;
-        mei=450;
+        zong=1279;
+        mei=602;
 
         arcView.setDairlyHotNum(mei);
         arcView.setTargetHotNum(zong);

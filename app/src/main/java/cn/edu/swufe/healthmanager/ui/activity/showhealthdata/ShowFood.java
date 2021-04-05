@@ -15,11 +15,11 @@ import cn.edu.swufe.healthmanager.ui.adapter.ExpandableListviewAdapter;
 public class ShowFood extends AppCompatActivity {
     private ExpandableListView expand_list;
     //Model：定义的数据
-    private String[] groups = {"2021年3月11日", "2021年3月12日", "2021年3月13日"};
+    private String[] groups = {"2021年4月5日"};
 
     //注意，字符数组不要写成{{"A1,A2,A3,A4"}, {"B1,B2,B3,B4，B5"}, {"C1,C2,C3,C4"}}
-    private String[][] childs = {{"馒头 100 370", "豆浆 100 50", "鸡蛋 100 80"}, {"豆浆 100 50", "馒头 100 370"}, {"鸡蛋 100 80"}};
-
+   // private String[][] childs = {{"馒头 100 370", "豆浆 100 50", "鸡蛋 100 80"}, {"豆浆 100 50", "馒头 100 370"}, {"鸡蛋 100 80"}};
+    private String[][] childs = {{"馒头 500 1850", "豆浆 100 50", "鸡蛋 100 80"}};
     private TitleBar titleBar;
 
     @Override

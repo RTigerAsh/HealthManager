@@ -22,7 +22,11 @@
 
         <activity android:name=".Welcome.WelcomeActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".ui.activity.Login" />
@@ -35,11 +39,7 @@
         <activity android:name=".ui.activity.HealthReport" >
         </activity>
         <activity android:name=".ui.activity.MainAvtivity.MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.activity.SetSportsData" ></activity>
         <activity android:name=".ui.activity.SetFoodData" ></activity>

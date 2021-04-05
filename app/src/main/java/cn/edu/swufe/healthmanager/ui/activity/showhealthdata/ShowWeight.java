@@ -74,21 +74,21 @@ public class ShowWeight extends AppCompatActivity {
     }
 
     private void initdata() {
-        //在这里获取数据
+        //在这里获取数据,"3/12","3/13","3/14","3/15","3/17","3/18" ,74.4,74.3,74.5,73.2,73.1,73.3
         x = new Object[]{
-                "3/11","3/12","3/13","3/14","3/15","3/17","3/18"
+                "3/22"
         };
         y = new Object[]{
-                74.5,74.4,74.3,74.5,73.2,73.1,73.3
+                74.5
         };
         newweight=y[y.length-1]+"";
         newweightdate=x[x.length-1]+"";
         //从数据库获取最初的体重和记录时间
         startweight="74.5";
-        startweightdate="2021年3月01日";
+        startweightdate="2021年3月22日";
 
         aimweight="65";
-        aimweightdate="2021年7月01日";
+        aimweightdate="2021年7月05日";
 
         //System.out.println("获取数据newweight:  "+newweight+"newweightdate: "+newweightdate);
     }

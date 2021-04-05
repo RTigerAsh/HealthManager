@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!--android:background="#65c8b3"-->
     <com.hjq.bar.TitleBar
         android:id="@+id/TitleBar_showsleep"
         android:layout_width="match_parent"
