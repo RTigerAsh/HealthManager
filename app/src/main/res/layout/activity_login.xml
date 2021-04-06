@@ -252,7 +252,7 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/user_register"/>
+                android:text="新用户注册" />
             <!--
             <Button
                 android:id="@+id/register"
