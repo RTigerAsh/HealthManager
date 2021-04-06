@@ -16,6 +16,7 @@ import java.util.List;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import cn.edu.swufe.healthmanager.R;
+import cn.edu.swufe.healthmanager.module.login.LoginActivity;
 import cn.edu.swufe.healthmanager.ui.activity.Login;
 
 public class WelcomeGuideActivity extends Activity implements View.OnClickListener {
@@ -142,7 +143,7 @@ public class WelcomeGuideActivity extends Activity implements View.OnClickListen
     }
     //点击按钮进入注册登录页面
     private void enterMainActivity(){
-        Intent intent = new Intent(WelcomeGuideActivity.this, Login.class);
+        Intent intent = new Intent(WelcomeGuideActivity.this, LoginActivity.class);
         startActivity(intent);
         SharedPreferencesUtil.setBoolean(WelcomeGuideActivity.this, SharedPreferencesUtil.FIRST_OPEN, false);
         finish();

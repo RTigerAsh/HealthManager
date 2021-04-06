@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.swufe.healthmanager">
-
+    <!-- 读写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 网路权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,16 +13,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/app"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".module.community.QuestionAddActivity"></activity>
+        <activity android:name=".module.community.QuestionDetailActivity" />
+        <activity android:name=".module.community.CommunityActivity" />
+
         <activity
             android:name=".Welcome.WelcomeGuideActivity"
             android:label="@string/title_activity_welcome_guide"
+
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Welcome.WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
-        <activity android:name=".Welcome.WelcomeActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,16 +35,24 @@
 
         </activity>
         <activity android:name=".ui.activity.Login" />
+        <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".ui.activity.EditName" />
         <activity android:name=".ui.activity.PersonInfo" />
         <activity android:name=".ui.activity.Register" />
         <activity android:name=".ui.activity.Setting" />
         <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />
         <activity android:name=".ui.activity.DetailePlan" />
+
+      
+
         <activity android:name=".ui.activity.HealthReport" >
         </activity>
         <activity android:name=".ui.activity.MainAvtivity.MainActivity" >
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".ui.activity.SetSportsData" ></activity>
         <activity android:name=".ui.activity.SetFoodData" ></activity>
@@ -50,6 +63,7 @@
         <activity android:name=".ui.activity.showhealthdata.ShowWeight" ></activity>
         <activity android:name=".ui.activity.showhealthdata.ShowSports" ></activity>
         <activity android:name=".ui.activity.showhealthdata.ShowFood" ></activity>
+
     </application>
 
 </manifest>

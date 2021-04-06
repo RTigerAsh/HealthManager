@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.litepal.LitePal;
@@ -28,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import cn.edu.swufe.healthmanager.db.LoginUser;
 import cn.edu.swufe.healthmanager.db.model.User;
+import cn.edu.swufe.healthmanager.module.community.cmmunityFragments.MainFragment;
 import cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.CustomViewPager;
 import cn.edu.swufe.healthmanager.ui.adapter.MyFragAdapter;
 import cn.edu.swufe.healthmanager.R;
@@ -82,11 +84,12 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (CustomViewPager) findViewById(R.id.view_pager);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         ivImg = (ImageView)findViewById(R.id.iv_img);
+        Fresco.initialize(this);
 
         //向ViewPager添加各页面
         listFragment = new ArrayList<>();
         listFragment.add(new Fragment1());
-        listFragment.add(new Fragment2());
+        listFragment.add(new MainFragment());//MainFragment()Fragment2()
         listFragment.add(new Fragment3());
         listFragment.add(new Fragment4());
 

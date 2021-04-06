@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login_background_ly"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,14 +11,17 @@
 
 
     <LinearLayout
+        android:id="@+id/ly_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="35dp"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp">
+
 
             <TextView
                 android:layout_marginLeft="20dp"
@@ -106,6 +110,88 @@
                 android:src="@drawable/ic_eye" />
 
         </LinearLayout>
+        <!--再次输入密码-->
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ly_ensure"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/et_ensure_password"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black0"
+                android:textSize="16sp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/ic_lock_black"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_eye" />
+
+
+        </LinearLayout>
+        <!--验证码输入-->
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/ly_captcha"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_yzm" />
+            <!-- 验证码输入框-->
+            <EditText
+                android:id="@+id/et_captcha"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:imeOptions="actionDone"
+                android:background="@android:color/transparent"
+                android:hint="请输入验证码"
+                android:inputType="textPassword"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black0"
+                android:textSize="16sp"
+                android:drawablePadding="8dp"
+               />
+
+            <ImageView android:drawableLeft="@drawable/ic_yzm"
+                android:id="@+id/iv_captcha"
+                android:layout_weight="0.5"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_eye" />
+
+        </LinearLayout>
 
 <!--        记住密码-->
         <LinearLayout
@@ -113,7 +199,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            >
 
             <CheckBox
                 android:buttonTint="@color/white"
@@ -122,7 +210,11 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:text="@string/remember"/>
+
+
         </LinearLayout>
+
+
 
 <!--        注册登录按钮-->
         <LinearLayout
@@ -139,7 +231,19 @@
                 android:layout_marginTop="20dp"
                 android:background="#1E90FF"
                 android:textColor="@color/white"
+                android:enabled="false"
                 android:text="@string/login" />
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
             <TextView
                 android:layout_marginTop="15dp"
                 android:id="@+id/register"
@@ -148,7 +252,7 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="新用户注册" />
+                android:text="@string/user_register"/>
             <!--
             <Button
                 android:id="@+id/register"
