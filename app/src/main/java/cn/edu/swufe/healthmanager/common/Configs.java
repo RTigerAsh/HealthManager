@@ -1,7 +1,7 @@
 package cn.edu.swufe.healthmanager.common;
 
 public class Configs {
-    public static final String SERVER_IP =  "47.119.132.173";
+    public static final String SERVER_IP =  "47.108.237.20";
     public static final String SERVER_PORT =  "9001";
 
     public static final String SERVER_AD = SERVER_IP +":"+SERVER_PORT;

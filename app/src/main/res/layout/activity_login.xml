@@ -159,7 +159,13 @@
             android:background="@drawable/input_background"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+            <ImageView
 
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_yzm" />
             <!-- 验证码输入框-->
             <EditText
                 android:id="@+id/et_captcha"
@@ -174,9 +180,9 @@
                 android:textColor="@color/black0"
                 android:textSize="16sp"
                 android:drawablePadding="8dp"
-                android:drawableLeft="@drawable/ic_lock_black"/>
+               />
 
-            <ImageView
+            <ImageView android:drawableLeft="@drawable/ic_yzm"
                 android:id="@+id/iv_captcha"
                 android:layout_weight="0.5"
                 android:layout_width="130dp"
@@ -246,7 +252,7 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/user_register"/>
+                android:text="新用户注册" />
             <!--
             <Button
                 android:id="@+id/register"

@@ -11,6 +11,7 @@ import android.animation.LayoutTransition;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -33,7 +34,7 @@ public class QuestionAddActivity extends AppCompatActivity implements View.OnCli
     private static final int itemSpaceHorizontal = 16;
 
     private QuestionAddViewModel mViewModel;
-    private ImageButton back_imb, commit_imb;
+    private  Button back_imb, commit_imb;
     private EditText content_et, label_et;
     private TextView category_tv;
 

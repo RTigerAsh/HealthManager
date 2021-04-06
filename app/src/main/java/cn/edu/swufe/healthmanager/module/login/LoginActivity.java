@@ -31,7 +31,7 @@ import org.litepal.LitePal;
 
 import java.util.List;
 
-import cn.edu.swufe.healthmanager.MainActivity;
+import cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity;
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
 import cn.edu.swufe.healthmanager.db.LoginUser;
@@ -40,7 +40,9 @@ import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.UserEntity;
 import cn.edu.swufe.healthmanager.module.community.CommunityActivity;
 import cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.GetBaseData;
+import cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity;
 import cn.edu.swufe.healthmanager.util.MD5;
+import cn.edu.swufe.healthmanager.util.PhotoUtils;
 import cn.edu.swufe.healthmanager.util.SharedPreferencesUtil;
 import cn.edu.swufe.healthmanager.util.ToastUtils;
 
@@ -166,16 +168,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     final String token = userEntityServerResult.getToken();
 
                     Log.i(TAG, "Token ->" + token);
-                    // 存储Token
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            loginViewModel.saveData(sharedPreferencesUtil, token);
-                        }
-                    }, "ThreadSaveToken").start();
-
-
-                    toastUtils.showShort(LoginActivity.this,"账户"+userEntityServerResult.getData().getUserName()+" 登录成功");
 
                     // 存储LoginUser，设置跳转的页面
                     UserEntity loginedUser = userEntityServerResult.getData();
@@ -183,8 +175,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     cn.edu.swufe.healthmanager.model.LoginUser.getInstance().updateUserEntity(loginedUser);
 
+                    // 存储Token
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            loginViewModel.saveData(sharedPreferencesUtil, token);
+                            savedb(cn.edu.swufe.healthmanager.model.LoginUser.getInstance().getUserEntity().getUserName());
+                        }
+                    }, "ThreadSaveToken").start();
 
-                    Intent intent = new Intent(LoginActivity.this, CommunityActivity.class);
+
+                    toastUtils.showShort(LoginActivity.this,"账户"+userEntityServerResult.getData().getUserName()+" 登录成功");
+
+
+
+                    Intent intent;
+
+                    if (doLogin){
+                        intent= new Intent(LoginActivity.this, MainActivity.class);
+                    }else {
+                        intent= new Intent(LoginActivity.this, GetBaseData.class);
+                    }
                     intent.putExtra(Configs.SP_TOKEN_KEY, token);
 
                     // 跳转页面
@@ -399,5 +410,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(login_flag == false){
             toastUtils.showShort(LoginActivity.this,"登录失败");
         }
+    }
+
+    private void savedb(String name){
+            User user = new User();
+            user.setName(name);
+            //user.setPassword(password);
+            //默认不记住密码，并设置默认头像
+            user.setPortrait((new PhotoUtils()).file2byte(this ,"default_portrait.jpg"));
+            user.setRemember(0);
+            user.save();
+
     }
 }

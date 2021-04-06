@@ -9,19 +9,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageButton
+        <Button
             android:id="@+id/question_back_imb"
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="返回"
             android:src="@drawable/arrow_back"
             />
-        <ImageButton
+        <Button
             android:id="@+id/question_commit_imb"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_back"
+            android:text="发表"
+            android:src="@drawable/arrow_forward"
             />
 
     </RelativeLayout>
