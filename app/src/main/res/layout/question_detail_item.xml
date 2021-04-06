@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/question_corner">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_gravity="left"
+            android:id="@+id/question_detail_user_avatar_imv"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            fresco:viewAspectRatio="1.33"
+            android:layout_weight="1"
+            fresco:placeholderImage="@drawable/m0"
+
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="10"
+            >
+            <TextView
+                android:id="@+id/question_detail_user_name_tv"
+                android:layout_width="match_parent"
+                android:textSize="16sp"
+                android:textColor="#222"
+                android:layout_height="wrap_content"
+                android:text="@string/account_name"
+                />
+
+            <TextView
+                android:id="@+id/question_detail_user_update_time_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="1949-10-1"
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:id="@+id/question_detail_content_tv"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="start"
+            android:textSize="16dp"
+            android:layout_height="match_parent"
+
+            android:text="@string/content_hi"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
