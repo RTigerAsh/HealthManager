@@ -147,8 +147,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
 
-        Log.i(TAG,"GetLoginTokenKey: " + LoginUser.getInstance().getUserEntity().getTokenKey());
-
+        // 避免重复获得相同问题
+        questionEntityList.clear();
         mViewModel.getQuestionList(page, Configs.PAGE_SIZE);
 
         mViewModel.getRequestResult().observe(this, new Observer<ServerResult<List<QuestionEntity>>>() {
@@ -167,7 +167,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     if(refreshLayout.isRefreshing()){
                         Log.i(TAG, "RefreshData");
                         questionEntityList.clear();
-
                     }
 
                     questionEntityList.addAll(listServerResult.getData());

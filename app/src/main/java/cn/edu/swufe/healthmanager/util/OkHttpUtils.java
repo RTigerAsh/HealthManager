@@ -81,6 +81,16 @@ public class OkHttpUtils {
         CLIENT.newCall(request).enqueue(callback);
     }
 
+    public static void get_test(String url, MutableLiveData date, Type type){
+        MyOkHttpCallback callback = new MyOkHttpCallback(date, type);
+        Log.i("OkHttpUtils", "RequestAt: " + url.toString());
+        Request request = new Request.Builder()
+                .get()
+                .url(url)
+                .build();
+        CLIENT.newCall(request).enqueue(callback);
+    }
+
     public static void post_test(String url, String json,  MutableLiveData date, Type type){
         MyOkHttpCallback callback = new MyOkHttpCallback(date, type);
         Log.i("OkHttpUtils", "RequestAt: " + url.toString());

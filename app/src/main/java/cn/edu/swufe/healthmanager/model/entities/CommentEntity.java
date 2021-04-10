@@ -84,4 +84,21 @@ public class CommentEntity {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    /**
+     * 设置进行评论的用户信息
+     * @param loginUser
+     * @return
+     */
+    public  boolean  setUserInfo(UserEntity loginUser){
+        if(loginUser == null){
+            return false;
+        }
+
+        this.setUserId(loginUser.getId());
+        this.setUserName(loginUser.getUserName());
+        this.setUserAvatar(loginUser.getAvatar());
+
+        return true;
+    }
 }

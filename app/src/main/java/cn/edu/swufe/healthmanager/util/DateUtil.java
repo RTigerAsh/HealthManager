@@ -1,18 +1,22 @@
 package cn.edu.swufe.healthmanager.util;
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.util.Date;
 public class DateUtil {
     private static final String JUST_NOW = "刚刚";
     private static final String ERROR = "系统时间错误";
 
-    private static final long SECOND = 1000;
+    // 增加L标识为 long 型变量，如不标识，则按 int 进行计算，再将结果转型为 long，此处会发生溢出
+    private static final long SECOND = 1000L;
 
-    private static final long MIN = 60 * 1000;
-    private static final long HOUR = 60 * 60 * 1000;
-    private static final long DAY = 24 * 60 * 60 * 1000;
-    private static final long MONTH = 30 * 24 * 60 * 60 * 1000;
-    private static final long YEAR = 365 * 30 * 24 * 60 * 60 * 1000;
+    private static final long MIN = 60 * 1000L;
+    private static final long HOUR = 60 * 60 * 1000L;
+    private static final long DAY = 24 * 60 * 60 * 1000L;
+    private static final long MONTH = 30 * 24 * 60 * 60 * 1000L;
+    private static final long YEAR = 365 * 30 * 24 * 60 * 60 * 1000L;
 
 
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -58,10 +62,18 @@ public class DateUtil {
 
         }else if(difference < YEAR){
             return (difference / MONTH) + "个月之前";
+
         }else{
             return (difference / YEAR) + "年之前";
         }
     }
 
 
+    public static void main(String[] args) {
+        System.out.println(DAY*30);
+        System.out.println(MONTH);
+        System.out.println(318272325);
+        System.out.println( 318272325 - MONTH);
+
+    }
 }
