@@ -11,29 +11,38 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.db.LoginUser;
+import cn.edu.swufe.healthmanager.model.SingleLoginUser;
+import cn.edu.swufe.healthmanager.model.entities.UserEntity;
 import cn.edu.swufe.healthmanager.ui.activity.HealthReport;
 import cn.edu.swufe.healthmanager.ui.activity.PersonInfo;
 import cn.edu.swufe.healthmanager.ui.activity.Setting;
 import cn.edu.swufe.healthmanager.ui.activity.showhealthdata.ShowWeight;
 import cn.edu.swufe.healthmanager.util.PhotoUtils;
+import cn.edu.swufe.healthmanager.util.UrlUtil;
 import cn.edu.swufe.healthmanager.util.widget.RoundImageView;
 
 public class Fragment4 extends Fragment implements View.OnClickListener {
     private ImageView setting;
     private LinearLayout info,info_base,info_healthreport,info_lastweek;
     private TextView info_name,info_account;
-    private RoundImageView portrait;
+//    private RoundImageView portrait;
+    private SimpleDraweeView portrait;
+
     private LoginUser loginUser = LoginUser.getInstance();
+    private UserEntity currentUser = SingleLoginUser.getInstance().getUserEntity();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_person_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_person_page_test, container, false);
         setting = (ImageView)view.findViewById(R.id.setting);
         info = (LinearLayout)view.findViewById(R.id.info);
         info_name = (TextView)view.findViewById(R.id.info_name);
-        portrait = (RoundImageView)view.findViewById(R.id.portrait);
+//        portrait = (RoundImageView)view.findViewById(R.id.portrait);
+        portrait = (SimpleDraweeView)view.findViewById(R.id.user_info_portrait);
 
         info_base= (LinearLayout)view.findViewById(R.id.perinfo_message);
         info_healthreport= (LinearLayout)view.findViewById(R.id.perinfo_healthreport);
@@ -49,7 +58,9 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
         info_lastweek.setOnClickListener(this);
 
         //登录则初始化用户的信息
-        initInfo();
+        //        initInfo();
+        initUserInfo();
+
 
         return view;
     }
@@ -59,8 +70,9 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
         super.onResume();
 
         //在onStart中init，修改信息后返回不会出现没有修改的情况
-        loginUser.reinit();
-        initInfo();
+//        loginUser.reinit();
+//        initInfo();
+        initUserInfo();
     }
 
     @Override
@@ -93,9 +105,14 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
         }
     }
 
-    //
+    @Deprecated
     private void initInfo(){
         info_name.setText(loginUser.getName());
         portrait.setImageBitmap((new PhotoUtils()).byte2bitmap(loginUser.getPortrait()));
+    }
+
+    private void initUserInfo(){
+        info_name.setText(currentUser.getUserName());
+        portrait.setImageURI(UrlUtil.getImage(currentUser.getAvatar()));
     }
 }

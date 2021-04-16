@@ -2,41 +2,23 @@ package cn.edu.swufe.healthmanager.Welcome;
 
 import android.os.Bundle;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
-import cn.edu.swufe.healthmanager.common.RequsestApi;
-import cn.edu.swufe.healthmanager.model.LoginUser;
+import cn.edu.swufe.healthmanager.model.SingleLoginUser;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.UserEntity;
-import cn.edu.swufe.healthmanager.module.community.CommunityActivity;
 import cn.edu.swufe.healthmanager.module.login.LoginActivity;
 import cn.edu.swufe.healthmanager.ui.activity.Login;
 import cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity;
-import cn.edu.swufe.healthmanager.util.JsonUtil;
-import cn.edu.swufe.healthmanager.util.OkHttpCallback;
-import cn.edu.swufe.healthmanager.util.OkHttpUtils;
 import cn.edu.swufe.healthmanager.util.ToastUtils;
-import okhttp3.Call;
 
 
 public class WelcomeActivity extends AppCompatActivity{
@@ -114,7 +96,7 @@ public class WelcomeActivity extends AppCompatActivity{
 
                     UserEntity loginedUser = userEntityServerResult.getData();
                     loginedUser.setTokenKey(tokenKey);
-                    LoginUser.getInstance().updateUserEntity(loginedUser);
+                    SingleLoginUser.getInstance().updateUserEntity(loginedUser);
 
                     // 4. 刷新token
                     sharedPreferencesUtil.putString(Configs.SP_TOKEN_KEY, userEntityServerResult.getToken());

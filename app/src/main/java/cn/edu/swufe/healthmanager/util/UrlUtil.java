@@ -31,6 +31,18 @@ public class UrlUtil {
                 .addPathSegment("user");
     }
 
+    public static String updateUserURL(String tokenKey, String userId){
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme("http")
+                .host(Configs.SERVER_IP)
+                .port(Integer.parseInt(Configs.SERVER_PORT))
+                .addPathSegments("user/")
+                .addPathSegment(userId)
+                .addQueryParameter("token_key", tokenKey)
+                .build();
+        return url.toString();
+    }
+
 
     public static HttpUrl.Builder userArticleApi(){
         return userApi()

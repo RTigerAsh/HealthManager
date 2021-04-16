@@ -82,7 +82,7 @@ public class LoginUser extends Application {
     @Override
     public String toString() {
         //id 昵称 肖像 地区 性别 生日
-        return "LoginUser{" +
+        return "SingleLoginUser{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", portrait ='" + portrait + '\'' +

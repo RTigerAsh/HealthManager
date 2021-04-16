@@ -1,5 +1,21 @@
 package cn.edu.swufe.healthmanager.model.entities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
+import cn.edu.swufe.healthmanager.common.Configs;
+import cn.edu.swufe.healthmanager.model.ServerResult;
+import cn.edu.swufe.healthmanager.model.SingleLoginUser;
+import cn.edu.swufe.healthmanager.util.JsonUtil;
+import cn.edu.swufe.healthmanager.util.OkHttpCallback;
+import cn.edu.swufe.healthmanager.util.OkHttpUtils;
+import cn.edu.swufe.healthmanager.util.SharedPreferencesUtil;
+import cn.edu.swufe.healthmanager.util.UrlUtil;
+
 public class UserEntity {
 
     private String id;
@@ -83,13 +99,47 @@ public class UserEntity {
         this.tokenKey = tokenKey;
     }
 
-    public void updateTokenKey(String newTokenKey){
+    public void updateTokenKey(String newTokenKey, Context context){
         if(this.getTokenKey() == null || newTokenKey == null) return;
 
         if(!this.getTokenKey().equals(newTokenKey)){
             this.setTokenKey(newTokenKey);
             // TODO: 修改sharedPreference， or 标记token变化，等待程序退出时再更新token
+            SharedPreferencesUtil.getInstance(context).putString(Configs.SP_TOKEN_KEY, newTokenKey);
+
         }
 
+    }
+
+    public void updateRemoteUserInfo(Context context){
+        String url = UrlUtil.updateUserURL(this.getTokenKey(), this.getId());
+        UpdateUser updateUser = new UpdateUser();
+        updateUser.setUsername(this.getUserName());
+
+
+        OkHttpUtils.post(url, new Gson().toJson(updateUser), new OkHttpCallback(){
+            @Override
+            public void onFinish(boolean isSuccess, String rlt) {
+                super.onFinish(isSuccess, rlt);
+                if(isSuccess){
+                    ServerResult serverResult = JsonUtil.toModel(rlt, ServerResult.class);
+//                    SingleLoginUser.getInstance().getUserEntity().updateTokenKey(serverResult.getToken(),context);
+                }
+
+            }
+        });
+
+    }
+
+}
+class UpdateUser{
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

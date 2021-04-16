@@ -1,5 +1,6 @@
 package cn.edu.swufe.healthmanager.module.community;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
@@ -15,6 +16,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 
 import org.w3c.dom.Comment;
 
@@ -43,6 +48,9 @@ public class QuestionDetailActivity extends AppCompatActivity implements View.On
     private QuestionDetailRecyclerViewAdapter questionDetailRecyclerViewAdapter;
     private Button btn_send;
     private EditText et_comment;
+    private RefreshLayout refreshLayout;
+
+    // todo：下拉刷新
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +64,19 @@ public class QuestionDetailActivity extends AppCompatActivity implements View.On
         btn_send = findViewById(R.id.question_detail_send);
         et_comment = findViewById(R.id.question_comment_et);
 
+
+        // 初始化 refreshLayout
+        initRefreshLayout();
+
+        // 初始化评论列表
         initRecyclerView();
 
 
+        // 设置按键触发
         question_detail_back_imb.setOnClickListener(this);
         btn_send.setOnClickListener(this);
 
+        // 观察数据返回
         mViewModel.getCommentRlt().observe(this, new Observer<ServerResult>() {
             @Override
             public void onChanged(ServerResult serverResult) {
@@ -92,15 +107,36 @@ public class QuestionDetailActivity extends AppCompatActivity implements View.On
 
                 // 2. 处理成功的请求
                 if(listServerResult.isSuccess()){
-                    commentEntityList.clear();
-                    commentEntityList.add(oriComment);
+                    if(!refreshLayout.isLoading()){
+                        commentEntityList.clear();
+                        commentEntityList.add(oriComment);
+                    }
+
                     commentEntityList.addAll(listServerResult.getData());
                     questionDetailRecyclerViewAdapter.notifyDataSetChanged();
+
+                    if(refreshLayout.isLoading()){
+                        refreshLayout.finishLoadMore();
+                    }
                 }
 
             }
         });
 
+
+    }
+
+    private void initRefreshLayout() {
+        refreshLayout = findViewById(R.id.quesiton_detail_refresh_ly);
+        refreshLayout.setEnableRefresh(false);
+        refreshLayout.setRefreshFooter(new ClassicsFooter(this));
+
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                mViewModel.getComments(++page, Configs.PAGE_SIZE, questionId);
+            }
+        });
 
     }
 
@@ -135,7 +171,6 @@ public class QuestionDetailActivity extends AppCompatActivity implements View.On
                 finish();
                 break;
             case R.id.question_detail_send:
-                // TODO: 输入判空
                 if(TextUtil.isEmpty(et_comment.getText().toString())){
                     new ToastUtils().showShort(this, "输入不能为空");
                 }else{

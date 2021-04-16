@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
         setContentView(R.layout.activity_main);
+        Fresco.initialize(this);
         intTestdata();
         initView();//初始化
         ivImg.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (CustomViewPager) findViewById(R.id.view_pager);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         ivImg = (ImageView)findViewById(R.id.iv_img);
-        Fresco.initialize(this);
+
 
         //向ViewPager添加各页面
         listFragment = new ArrayList<>();

@@ -31,7 +31,6 @@ import java.util.List;
 
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
-import cn.edu.swufe.healthmanager.model.LoginUser;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.QuestionEntity;
 import cn.edu.swufe.healthmanager.module.community.IClickListener;

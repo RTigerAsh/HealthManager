@@ -8,12 +8,11 @@ import androidx.lifecycle.ViewModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.w3c.dom.Comment;
 
 import java.lang.reflect.Type;
 import java.util.List;
 
-import cn.edu.swufe.healthmanager.model.LoginUser;
+import cn.edu.swufe.healthmanager.model.SingleLoginUser;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.CommentEntity;
 import cn.edu.swufe.healthmanager.model.entities.UserEntity;
@@ -47,7 +46,7 @@ public class QuestionDetailViewModel extends ViewModel {
         CommentEntity commentEntity = new CommentEntity();
 
         // 1. 获得用户信息
-        loginUser = LoginUser.getInstance().getUserEntity();
+        loginUser = SingleLoginUser.getInstance().getUserEntity();
 
         // 2. 生成URL
         url = UrlUtil.uploadCommentURL(loginUser.getTokenKey());
@@ -73,7 +72,6 @@ public class QuestionDetailViewModel extends ViewModel {
      * @param questionId
      */
     public void getComments(int page, int size, String questionId){
-        // todo: 查询问题的所有评论
         String url;
         Type rltType;
 
