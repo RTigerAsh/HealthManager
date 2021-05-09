@@ -147,7 +147,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
 
-        Log.i(TAG,"GetLoginTokenKey: " + LoginUser.getInstance().getUserEntity().getTokenKey());
+//        Log.i(TAG,"GetLoginTokenKey: " + LoginUser.getInstance().getUserEntity().getTokenKey());
 
         mViewModel.getQuestionList(page, Configs.PAGE_SIZE);
 

@@ -1,6 +1,7 @@
 package cn.edu.swufe.healthmanager.ui.activity;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -135,6 +136,10 @@ public class SetWeightPopupWindow extends Activity implements View.OnClickListen
             case R.id.btn_setweight_save:
                 //保存数据
                 weight=RuleView.getCurrentNumber()/1.0;
+
+                SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+                editor.putString("weightnow",""+weight);
+                editor.commit();
                 DairyBodyMessage message = new DairyBodyMessage();
                 message.setBody_weight(weight);
                 message.setBody_date(new Date().toString());

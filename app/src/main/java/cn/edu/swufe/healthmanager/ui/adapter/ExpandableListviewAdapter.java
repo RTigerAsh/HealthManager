@@ -106,8 +106,11 @@ public class ExpandableListviewAdapter extends BaseExpandableListAdapter {
         }
         String[] str =childs[groupPosition][childPosition].split(" ");
         childViewHolder.name.setText(str[0]);
+
         childViewHolder.time.setText(str[1]+jliang);
+
         childViewHolder.hot.setText(str[2]+"千卡");
+
         return convertView;
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Welcome.WelcomeActivity">
-
+    <!--android:src="@mipmap/main_welcome"mainwelcome2-->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

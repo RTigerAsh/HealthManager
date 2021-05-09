@@ -2,6 +2,7 @@ package cn.edu.swufe.healthmanager.ui.activity;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ import cn.edu.swufe.healthmanager.util.GetFoodDataDialog;
 import cn.edu.swufe.healthmanager.util.GetSportDataDialog;
 
 import static cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity.intTestdata;
+
 
 public class SetFoodData extends AppCompatActivity implements View.OnClickListener{
     //用来测试的数据，以后改成数据库获取
@@ -208,6 +210,7 @@ public class SetFoodData extends AppCompatActivity implements View.OnClickListen
                             mymap.put("foodpostion",listpostion);
                             mymap.put("foodhot", hot);
                             mymap.put("foodname", name);
+                            if(string.equals("0"))string="300";
                             mymap.put("foodnum", string);
                             food_numlist.add(mymap);
                             System.out.println("回调函数处理得到列表："+food_numlist);
@@ -340,6 +343,46 @@ public class SetFoodData extends AppCompatActivity implements View.OnClickListen
 
             case R.id.button_finish_getfooddata:
                 //点击按钮返回主页同时数据保存到数据库
+                reinitview();
+
+                SharedPreferences pref = getSharedPreferences("datafrag1", MODE_PRIVATE);
+                if(pref.getString("foodhot","0").equals("暂无数据")){
+                    SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+                    int num=Integer.parseInt(pref.getString("foodhot","0"))+finalnum;
+                    editor.putString("foodhot",""+num);
+
+                    // 获取的食物列表进行格式化 private String[][] childs = {{"馒头 500 1850", "豆浆 100 50", "鸡蛋 100 80"}};
+                    String splist="";
+                    for (int j = 0; j<food_numlist.size(); j++){
+                        int hot=Integer.parseInt((String) food_numlist.get(j).get("foodhot"))*Integer.parseInt((String) food_numlist.get(j).get("foodnum"))/100;
+                        String list= (String) food_numlist.get(j).get("foodname")+" "+(String) food_numlist.get(j).get("foodnum")+" "+hot+"/";
+                        splist=splist+list;
+                    }
+
+                    editor.putString("foodlist",""+splist);
+                    System.out.println("摄入食物列表放入SP"+splist);
+
+                    editor.commit();
+                }else {
+                    SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+                    int num=Integer.parseInt(pref.getString("foodhot","0"))+finalnum;
+                    editor.putString("foodhot",""+num);
+
+                    // 获取的食物列表进行格式化 private String[][] childs = {{"馒头 500 1850", "豆浆 100 50", "鸡蛋 100 80"}};
+                    String splist=pref.getString("foodlist","");
+                    for (int j = 0; j<food_numlist.size(); j++){
+                        int hot=Integer.parseInt((String) food_numlist.get(j).get("foodhot"))*Integer.parseInt((String) food_numlist.get(j).get("foodnum"))/100;
+                        String list= (String) food_numlist.get(j).get("foodname")+" "+(String) food_numlist.get(j).get("foodnum")+" "+hot+"/";
+                        splist=splist+list;
+                    }
+
+                    editor.putString("foodlist",""+splist);
+                    System.out.println("摄入食物列表放入SP"+splist);
+
+                    editor.commit();
+
+                }
+
 
                 //遍历获取数据
                 if (Listid.size()!=0){

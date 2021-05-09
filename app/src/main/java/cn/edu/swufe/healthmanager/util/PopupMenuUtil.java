@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import cn.edu.swufe.healthmanager.R;
+import cn.edu.swufe.healthmanager.module.community.QuestionAddActivity;
 import cn.edu.swufe.healthmanager.ui.activity.SetFoodData;
 import cn.edu.swufe.healthmanager.ui.activity.SetSleepPopupWindow;
 import cn.edu.swufe.healthmanager.ui.activity.SetSportsData;
@@ -149,7 +150,8 @@ public class PopupMenuUtil {
                     break;
                 case 2:
                     //求助帖
-                    showToast(context, "index=" + index);
+                    Intent intent2 = new Intent(context, QuestionAddActivity.class);
+                    context.startActivity(intent2);
                     break;
                 case 5:
                     _close();

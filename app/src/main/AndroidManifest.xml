@@ -27,11 +27,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Welcome.WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
 
         </activity>
         <activity android:name=".ui.activity.Login" />
@@ -42,17 +42,14 @@
         <activity android:name=".ui.activity.Setting" />
         <activity android:name=".ui.activity.BaseDataFragment.GetBaseData" />
         <activity android:name=".ui.activity.DetailePlan" />
-
-
-
         <activity android:name=".ui.activity.HealthReport" >
         </activity>
         <activity android:name=".ui.activity.MainAvtivity.MainActivity" >
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.activity.SetSportsData" ></activity>
         <activity android:name=".ui.activity.SetFoodData" ></activity>
@@ -63,7 +60,15 @@
         <activity android:name=".ui.activity.showhealthdata.ShowWeight" ></activity>
         <activity android:name=".ui.activity.showhealthdata.ShowSports" ></activity>
         <activity android:name=".ui.activity.showhealthdata.ShowFood" ></activity>
-
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.healthmanager.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

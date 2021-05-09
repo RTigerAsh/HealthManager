@@ -44,6 +44,7 @@ import java.io.InputStream;
 public class PhotoUtils {
     //方法1，take photo
     public Uri take_photo_util(Context context, String auth, String filename){
+
         Uri imageUri;
         File outputImage = new File(context.getExternalCacheDir(), filename);
         //处理重复拍照问题
@@ -61,6 +62,7 @@ public class PhotoUtils {
         } else {
             imageUri = Uri.fromFile(outputImage);
         }
+
         return imageUri;
     }
 

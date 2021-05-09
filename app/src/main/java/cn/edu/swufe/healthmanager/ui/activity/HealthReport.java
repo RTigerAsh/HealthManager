@@ -1,6 +1,7 @@
 package cn.edu.swufe.healthmanager.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -76,6 +77,10 @@ public class HealthReport extends AppCompatActivity implements View.OnClickListe
 
         System.out.println("gender: "+gender+",height: "+height+",weight: "+weight+",aim_weight: "+aim_weight+",bmi: "+bmi+",bmr: "+bmr+",min_weight: "+min_weight);
 
+        //bmr数据放入sp
+        SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+        editor.putInt("zong",Math.round(bmr));
+        editor.commit();
 
     }
     private void initView(){

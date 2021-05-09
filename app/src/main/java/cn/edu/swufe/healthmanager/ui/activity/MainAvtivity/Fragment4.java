@@ -1,6 +1,8 @@
 package cn.edu.swufe.healthmanager.ui.activity.MainAvtivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +22,21 @@ import cn.edu.swufe.healthmanager.ui.activity.showhealthdata.ShowWeight;
 import cn.edu.swufe.healthmanager.util.PhotoUtils;
 import cn.edu.swufe.healthmanager.util.widget.RoundImageView;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Fragment4 extends Fragment implements View.OnClickListener {
     private ImageView setting;
     private LinearLayout info,info_base,info_healthreport,info_lastweek;
     private TextView info_name,info_account;
     private RoundImageView portrait;
+    private PhotoUtils photoUtils = new PhotoUtils();
     private LoginUser loginUser = LoginUser.getInstance();
-
+    private MainActivity mainActivity=(MainActivity) getActivity();
+    @Override
+    public void onAttach(Context context) {
+        mainActivity = (MainActivity) getActivity();
+        super.onAttach(context);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_person_page, container, false);
@@ -50,6 +60,7 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
 
         //登录则初始化用户的信息
         initInfo();
+//        portrait.setImageBitmap(photoUtils.byte2bitmap((new PhotoUtils()).file2byte(mainActivity ,"default_portrait.jpg")));
 
         return view;
     }
@@ -97,5 +108,14 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
     private void initInfo(){
         info_name.setText(loginUser.getName());
         portrait.setImageBitmap((new PhotoUtils()).byte2bitmap(loginUser.getPortrait()));
+        SharedPreferences pref = mainActivity.getSharedPreferences("datafrag1", MODE_PRIVATE);
+
+        if(pref.getInt("initpo",3)!=2|pref.getInt("initpo",3)==0){
+
+            portrait.setImageBitmap(photoUtils.byte2bitmap((new PhotoUtils()).file2byte(mainActivity ,"default_portrait.jpg")));
+
+        }else {
+            System.out.println("获取initpo ==  "+pref.getInt("initpo",3));
+        }
     }
 }

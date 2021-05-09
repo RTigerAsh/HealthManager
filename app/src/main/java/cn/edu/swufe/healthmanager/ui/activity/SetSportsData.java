@@ -3,6 +3,7 @@ package cn.edu.swufe.healthmanager.ui.activity;
 
 import android.content.Context;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,7 @@ import cn.edu.swufe.healthmanager.util.ActivityCollector;
 import cn.edu.swufe.healthmanager.util.GetSportDataDialog;
 
 import static cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity.intTestdata;
+
 
 public class SetSportsData extends AppCompatActivity implements View.OnClickListener{
     //用来测试的数据，以后改成数据库获取
@@ -136,9 +138,14 @@ public class SetSportsData extends AppCompatActivity implements View.OnClickList
                 Listtime.add(sport_timelist.get(i).get("sporttime")+"");
             }
             sport_selectedtv.setText("总计 "+finalnum+" 千卡");
-
+//            SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+//            editor.putString("sporthot",""+finalnum);
+//            System.out.println("yundong热量放入SP"+finalnum);
+//            editor.commit();
         }
         mysowlistAdapter.notifyDataSetChanged();
+
+
     }
 
     //数据选择listview
@@ -211,6 +218,7 @@ public class SetSportsData extends AppCompatActivity implements View.OnClickList
                             mymap.put("sportpostion",listpostion);
                             mymap.put("sporthot", hot);
                             mymap.put("sportname", name);
+                            if(string.equals("0"))string="30";
                             mymap.put("sporttime", string);
                             sport_timelist.add(mymap);
                             System.out.println("回调函数处理得到列表："+sport_timelist);
@@ -343,6 +351,43 @@ public class SetSportsData extends AppCompatActivity implements View.OnClickList
 
             case R.id.button_finish_getsportdata:
                 //点击按钮返回主页同时数据保存到数据库
+                reinitview();
+
+                SharedPreferences pref = getSharedPreferences("datafrag1", MODE_PRIVATE);
+                if(pref.getString("sporthot","0").equals("暂无数据")){
+                    SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+                    editor.putString("sporthot",""+finalnum);
+
+                    //获取的运动列表进行格式化，放入sp   private String[][] childs = {{"跑步 30 370", "游泳 30 268", "跑步 60 740"}};
+
+                    String splist="";
+                    for (int j = 0; j<sport_timelist.size(); j++){
+                        int hot=Integer.parseInt((String) sport_timelist.get(j).get("sporthot"))*Integer.parseInt((String) sport_timelist.get(j).get("sporttime"))/60;
+                        String list= (String) sport_timelist.get(j).get("sportname")+" "+(String) sport_timelist.get(j).get("sporttime")+" "+hot+"/";
+                        splist=splist+list;
+                    }
+
+                    editor.putString("sportlist",""+splist);
+                    System.out.println("sporthot无数据，运动列表放入SP"+splist);
+                    editor.commit();
+                }else {
+                    SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+                    int num=Integer.parseInt(pref.getString("sporthot","0"))+finalnum;
+                    editor.putString("sporthot",""+num);
+
+                    //获取的运动列表进行格式化，放入sp   private String[][] childs = {{"跑步 30 370", "游泳 30 268", "跑步 60 740"}};
+
+                    String splist=pref.getString("sportlist","");
+                    for (int j = 0; j<sport_timelist.size(); j++){
+                        int hot=Integer.parseInt((String) sport_timelist.get(j).get("sporthot"))*Integer.parseInt((String) sport_timelist.get(j).get("sporttime"))/60;
+                        String list= (String) sport_timelist.get(j).get("sportname")+" "+(String) sport_timelist.get(j).get("sporttime")+" "+hot+"/";
+                        splist=splist+list;
+                    }
+
+                    editor.putString("sportlist",""+splist);
+                    System.out.println("sporthot有数据，运动列表放入SP"+splist);
+                    editor.commit();
+                }
 
                 //遍历获取数据
                 if (Listid.size()!=0){

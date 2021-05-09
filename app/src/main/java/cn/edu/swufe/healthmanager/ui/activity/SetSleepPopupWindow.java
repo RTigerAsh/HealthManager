@@ -2,6 +2,7 @@ package cn.edu.swufe.healthmanager.ui.activity;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,7 +39,7 @@ public class SetSleepPopupWindow extends Activity implements View.OnClickListene
     private Button btn_save;
     private TextView tv_cancel,tv_start,tv_stop,tv_zong;
     private LinearLayout layout,layout_start,layout_stop;
-    private Double zong;
+    private Double zong=8.0;
     private Date start,stop;
     private TimePickerView pvTime;
 
@@ -92,6 +93,14 @@ public class SetSleepPopupWindow extends Activity implements View.OnClickListene
                 break;
             case R.id.btn_setsleep_save:
                 //保存数据
+                SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+                if(zong>=10){
+                    editor.putString("sleeptime","过长");
+                }else if(zong<10&&zong>=8){
+                    editor.putString("sleeptime","适中");
+                }else if(zong<8){
+                    editor.putString("sleeptime","过短");}
+                editor.commit();
 //                DairyBodyMessage message = new DairyBodyMessage();
 //                message.setBody_weight(weight);
 //                message.setBody_date(new Date().toString());
@@ -177,7 +186,7 @@ public class SetSleepPopupWindow extends Activity implements View.OnClickListene
     private String getZongtime(Date start,Date stop){
         long time1=start.getTime();
         long time2=stop.getTime();
-        Double date=(time2-time1)/(1000*60*60.0);
+        Double date=24+(time2-time1)/(1000*60*60.0);
         java.text.DecimalFormat myformat=new java.text.DecimalFormat("0.0");
         return myformat.format(date);
     }

@@ -20,7 +20,7 @@
             android:orientation="vertical"
 
             >
-            <!--    顶部蓝色区-->
+            <!--    顶部蓝色区 android:background="@color/main"gray1-->
             <LinearLayout
                 android:background="@color/main"
                 android:orientation="vertical"

@@ -194,7 +194,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (doLogin){
                         intent= new Intent(LoginActivity.this, MainActivity.class);
                     }else {
-                        intent= new Intent(LoginActivity.this, GetBaseData.class);
+                        intent= new Intent(LoginActivity.this, GetBaseData.class);//GetBaseData  MainActivity
                     }
                     intent.putExtra(Configs.SP_TOKEN_KEY, token);
 
@@ -305,7 +305,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.register:
                 if(doLogin){
                     // 显示再次输入密码框
-                    ly_login_background.setBackgroundResource(R.drawable.wallpape_22);
+                    ly_login_background.setBackgroundResource(R.drawable.wallpaper222);//wallpape_22
                     ly_ensure.setVisibility(View.VISIBLE);
                     register.setText(R.string.back_login);
                     // 设置按钮为注册
@@ -313,7 +313,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     doLogin = false;
                 }else{
                     // 隐藏再次输入密码框
-                    ly_login_background.setBackgroundResource(R.drawable.wallpaper_11);
+                    ly_login_background.setBackgroundResource(R.drawable.wallpaper112);//wallpaper_11
                     ly_ensure.setVisibility(View.GONE);
                     register.setText(R.string.back_login);
                     // 设置按钮为登录
@@ -388,7 +388,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //第一次注册的用户登录跳转到基础信息获取页面
             if(getIntent().getBooleanExtra("first_register",true)) {
                 Log.d("health","first_register");
-                Intent intent1 = new Intent(LoginActivity.this, GetBaseData.class);
+                Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);//GetBaseData
                 startActivity(intent1);
 
             }else {
