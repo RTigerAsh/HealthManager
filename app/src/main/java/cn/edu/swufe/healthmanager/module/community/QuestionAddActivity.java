@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.swufe.healthmanager.R;
-import cn.edu.swufe.healthmanager.model.LoginUser;
+import cn.edu.swufe.healthmanager.model.SingleLoginUser;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.Category;
 import cn.edu.swufe.healthmanager.module.community.Adapters.CategoryRecyclerViewAdapter;
@@ -160,11 +159,10 @@ public class QuestionAddActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.question_commit_imb:
-                // TODO: 保存文章
                 // 输入：类别（唯一）、内容、标签
                 // tokenKey 可通过单例获取
                 if(selectedCategory != null){
-                    String tokenKey = LoginUser.getInstance().getUserEntity().getTokenKey();
+                    String tokenKey = SingleLoginUser.getInstance().getUserEntity().getTokenKey();
                     String categoryId = selectedCategory.getId();
 
                     mViewModel.uploadQuestion(categoryId,

@@ -17,13 +17,24 @@
             />
 
     </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_weight="1"
-        android:id="@+id/community_question_detail_recycle_view"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/quesiton_detail_refresh_ly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_weight="1"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/community_question_detail_recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,13 +42,16 @@
         android:orientation="horizontal"
         >
         <EditText
+            android:id="@+id/question_comment_et"
             android:background="@drawable/edit_text_corner"
             android:layout_weight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
-        <ImageButton
+        <Button
+            android:id="@+id/question_detail_send"
+            android:text="发送"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/arrow_back"

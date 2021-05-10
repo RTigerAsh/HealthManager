@@ -22,7 +22,6 @@
             fresco:viewAspectRatio="1.33"
             android:layout_weight="1"
             fresco:placeholderImage="@drawable/m0"
-
             />
         <LinearLayout
             android:layout_width="wrap_content"

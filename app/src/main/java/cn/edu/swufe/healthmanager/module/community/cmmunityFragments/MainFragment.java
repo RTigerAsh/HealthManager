@@ -31,7 +31,6 @@ import java.util.List;
 
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
-import cn.edu.swufe.healthmanager.model.LoginUser;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.QuestionEntity;
 import cn.edu.swufe.healthmanager.module.community.IClickListener;
@@ -147,7 +146,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
 
+
+        // 避免重复获得相同问题
+        questionEntityList.clear();
+
 //        Log.i(TAG,"GetLoginTokenKey: " + LoginUser.getInstance().getUserEntity().getTokenKey());
+
 
         mViewModel.getQuestionList(page, Configs.PAGE_SIZE);
 
@@ -167,7 +171,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     if(refreshLayout.isRefreshing()){
                         Log.i(TAG, "RefreshData");
                         questionEntityList.clear();
-
                     }
 
                     questionEntityList.addAll(listServerResult.getData());

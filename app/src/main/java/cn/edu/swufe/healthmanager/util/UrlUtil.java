@@ -1,6 +1,7 @@
 package cn.edu.swufe.healthmanager.util;
 
 import cn.edu.swufe.healthmanager.common.Configs;
+import cn.edu.swufe.healthmanager.model.entities.CommentEntity;
 import okhttp3.HttpUrl;
 
 public class UrlUtil {
@@ -28,6 +29,18 @@ public class UrlUtil {
                 .host(Configs.SERVER_IP)
                 .port(Integer.parseInt(Configs.SERVER_PORT))
                 .addPathSegment("user");
+    }
+
+    public static String updateUserURL(String tokenKey, String userId){
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme("http")
+                .host(Configs.SERVER_IP)
+                .port(Integer.parseInt(Configs.SERVER_PORT))
+                .addPathSegments("user/")
+                .addPathSegment(userId)
+                .addQueryParameter("token_key", tokenKey)
+                .build();
+        return url.toString();
     }
 
 
@@ -66,6 +79,31 @@ public class UrlUtil {
                 .port(Integer.parseInt(Configs.SERVER_PORT))
                 .addPathSegments("user/image")
                 .addPathSegment(userAvatar)
+                .build();
+        return url.toString();
+    }
+
+    public static String uploadCommentURL(String tokenKey){
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme("http")
+                .host(Configs.SERVER_IP)
+                .port(Integer.parseInt(Configs.SERVER_PORT))
+                .addPathSegments("user/comment")
+                .setQueryParameter("token_key", tokenKey)
+                .build();
+        return url.toString();
+
+    }
+
+    public static String getCommentsListURL(int page, int size, String questionId){
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme("http")
+                .host(Configs.SERVER_IP)
+                .port(Integer.parseInt(Configs.SERVER_PORT))
+                .addPathSegments("user/comment/list")
+                .addPathSegment(String.valueOf(page))
+                .addPathSegment(String.valueOf(size))
+                .addQueryParameter("article_id", questionId)
                 .build();
         return url.toString();
     }

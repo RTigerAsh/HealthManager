@@ -31,6 +31,7 @@ import org.litepal.LitePal;
 
 import java.util.List;
 
+import cn.edu.swufe.healthmanager.model.SingleLoginUser;
 import cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity;
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.common.Configs;
@@ -38,9 +39,7 @@ import cn.edu.swufe.healthmanager.db.LoginUser;
 import cn.edu.swufe.healthmanager.db.model.User;
 import cn.edu.swufe.healthmanager.model.ServerResult;
 import cn.edu.swufe.healthmanager.model.entities.UserEntity;
-import cn.edu.swufe.healthmanager.module.community.CommunityActivity;
 import cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment.GetBaseData;
-import cn.edu.swufe.healthmanager.ui.activity.MainAvtivity.MainActivity;
 import cn.edu.swufe.healthmanager.util.MD5;
 import cn.edu.swufe.healthmanager.util.PhotoUtils;
 import cn.edu.swufe.healthmanager.util.SharedPreferencesUtil;
@@ -173,14 +172,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     UserEntity loginedUser = userEntityServerResult.getData();
                     loginedUser.setTokenKey(token);
 
-                    cn.edu.swufe.healthmanager.model.LoginUser.getInstance().updateUserEntity(loginedUser);
+                    SingleLoginUser.getInstance().updateUserEntity(loginedUser);
 
                     // 存储Token
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             loginViewModel.saveData(sharedPreferencesUtil, token);
-                            savedb(cn.edu.swufe.healthmanager.model.LoginUser.getInstance().getUserEntity().getUserName());
+                            savedb(SingleLoginUser.getInstance().getUserEntity().getUserName());
                         }
                     }, "ThreadSaveToken").start();
 

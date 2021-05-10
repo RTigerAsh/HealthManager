@@ -45,14 +45,18 @@ import com.bigkoo.pickerview.view.TimePickerView;
 
 import cn.edu.swufe.healthmanager.R;
 import cn.edu.swufe.healthmanager.db.LoginUser;
+import cn.edu.swufe.healthmanager.model.SingleLoginUser;
+import cn.edu.swufe.healthmanager.model.entities.UserEntity;
 import cn.edu.swufe.healthmanager.util.ActivityCollector;
 import cn.edu.swufe.healthmanager.util.CityBean;
 import cn.edu.swufe.healthmanager.util.PhotoUtils;
 import cn.edu.swufe.healthmanager.util.ProvinceBean;
 import cn.edu.swufe.healthmanager.util.ToastUtils;
+import cn.edu.swufe.healthmanager.util.UrlUtil;
 import cn.edu.swufe.healthmanager.util.widget.ItemGroup;
-import cn.edu.swufe.healthmanager.util.widget.RoundImageView;
 import cn.edu.swufe.healthmanager.util.widget.TitleLayout;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -62,6 +66,8 @@ import static android.provider.MediaStore.EXTRA_OUTPUT;
 public class PersonInfo extends AppCompatActivity implements View.OnClickListener {
     private ItemGroup ig_id,ig_name,ig_gender,ig_region,ig_brithday;
     private LoginUser loginUser = LoginUser.getInstance();
+
+    private UserEntity currentUser = SingleLoginUser.getInstance().getUserEntity();
     private LinearLayout ll_portrait;
     private ToastUtils mToast = new ToastUtils();
 
@@ -71,7 +77,10 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
 
     private OptionsPickerView pvOptions;
 
-    private RoundImageView ri_portrati;
+//    private RoundImageView ri_portrati;
+
+    private SimpleDraweeView user_avatar;
+
     private Uri imageUri;  //拍照功能的地址
     private static final int TAKE_PHOTO = 1;
     private static final int FROM_ALBUMS = 2;
@@ -98,7 +107,9 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
         ig_region = (ItemGroup)findViewById(R.id.ig_region);
         ig_brithday = (ItemGroup)findViewById(R.id.ig_brithday);
         ll_portrait = (LinearLayout)findViewById(R.id.ll_portrait);
-        ri_portrati = (RoundImageView)findViewById(R.id.ri_portrait);
+//        ri_portrati = (RoundImageView)findViewById(R.id.ri_portrait);
+
+        user_avatar = findViewById(R.id.ri_portrait);
         titleLayout = (TitleLayout)findViewById(R.id.tl_title);
 
         ig_name.setOnClickListener(this);
@@ -112,6 +123,11 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 loginUser.update();
+                currentUser.setUserName(ig_name.getContentEdt().getText().toString());
+
+                // todo: 完善用户信息更新
+//                currentUser.updateRemoteUserInfo();
+
                 mToast.showShort(PersonInfo.this,"保存成功");
                 SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
                 editor.putInt("initpo2",1);
@@ -218,7 +234,7 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
                     try {
                         //将拍摄的图片展示并更新数据库
                         Bitmap bitmap = BitmapFactory.decodeStream((getContentResolver().openInputStream(imageUri)));
-                        ri_portrati.setImageBitmap(bitmap);
+                        user_avatar.setImageBitmap(bitmap);
                         loginUser.setPortrait(photoUtils.bitmap2byte(bitmap));
                     }catch (FileNotFoundException e){
                         e.printStackTrace();
@@ -238,7 +254,7 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
                 if(imagePath != null){
                     //将拍摄的图片展示并更新数据库
                     Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
-                    ri_portrati.setImageBitmap(bitmap);
+                    user_avatar.setImageBitmap(bitmap);
                     loginUser.setPortrait(photoUtils.bitmap2byte(bitmap));
                 }else{
                     Log.d("food","没有找到图片");
@@ -257,9 +273,16 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
     //从数据库中初始化数据并展示
     private void initInfo(){
         LoginUser loginUser = LoginUser.getInstance();
-        ig_id.getContentEdt().setText(String.valueOf(loginUser.getId()));  //ID是int，转string
-        ig_name.getContentEdt().setText(loginUser.getName());
-        ri_portrati.setImageBitmap(photoUtils.byte2bitmap(loginUser.getPortrait()));
+
+//        ig_id.getContentEdt().setText(String.valueOf(loginUser.getId()));  //ID是int，转string
+//        ig_name.getContentEdt().setText(loginUser.getName());
+
+        ig_id.getContentEdt().setText(String.valueOf(currentUser.getId()));  //ID是int，转string
+        ig_name.getContentEdt().setText(currentUser.getUserName());
+
+//        ri_portrati.setImageBitmap(photoUtils.byte2bitmap(loginUser.getPortrait()));
+        user_avatar.setImageURI(UrlUtil.getImage(currentUser.getAvatar()));
+
         ig_gender.getContentEdt().setText(loginUser.getGender());
         ig_region.getContentEdt().setText(loginUser.getRegion());
         ig_brithday.getContentEdt().setText(loginUser.getBrithday());
