@@ -20,6 +20,7 @@ import org.litepal.LitePal;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
+import java.sql.Date;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView navigation;//底部导航栏对象
     List<Fragment> listFragment;//存储页面对象
     private ImageView ivImg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         testUser.setAim_style(0);
         testUser.setAim_time(20);
         testUser.setAim_weight(60);
+
         testUser.save();
         System.out.println("testUser:    "+testUser);
     }

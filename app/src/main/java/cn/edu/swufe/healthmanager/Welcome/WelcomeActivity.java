@@ -43,7 +43,7 @@ public class WelcomeActivity extends AppCompatActivity{
                 @Override
                 public void run() {
                     /*2秒后进入主页*/
-                    enterAcitity(GUIDE);
+                    enterAcitity(LOGIN);//GUIDE
                     finish(); /*使用finish将该activity进行销毁，否则，在按下手机返回键时，会返回至启动页*/
                 }
             },2000);

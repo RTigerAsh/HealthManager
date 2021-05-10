@@ -18,6 +18,7 @@ import java.util.Date;
 import android.Manifest;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -128,11 +129,17 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
 //                currentUser.updateRemoteUserInfo();
 
                 mToast.showShort(PersonInfo.this,"保存成功");
+                SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+                editor.putInt("initpo2",1);
+                editor.putInt("initpo",2);
+
+                editor.commit();
                 finish();
             }
         });
 
         initInfo();
+//        ri_portrati.setImageBitmap(photoUtils.byte2bitmap((new PhotoUtils()).file2byte(this ,"default_portrait.jpg")));
     }
 
     @Override
@@ -279,6 +286,14 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
         ig_gender.getContentEdt().setText(loginUser.getGender());
         ig_region.getContentEdt().setText(loginUser.getRegion());
         ig_brithday.getContentEdt().setText(loginUser.getBrithday());
+        SharedPreferences pref = getSharedPreferences("datafrag1", MODE_PRIVATE);
+        if(pref.getInt("initpo2",2)==2){
+
+            ri_portrati.setImageBitmap(photoUtils.byte2bitmap((new PhotoUtils()).file2byte(this ,"default_portrait.jpg")));
+
+        }else {
+            System.out.println("获取initpo2 ==  "+pref.getInt("initpo2",2));
+        }
     }
 
     //初始化性别、地址和生日的数据
@@ -350,7 +365,7 @@ public class PersonInfo extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onClick(View view) {
                 if(popupWindow != null && popupWindow.isShowing()) {
-                    imageUri = photoUtils.take_photo_util(PersonInfo.this, "com.foodsharetest.android.fileprovider", "output_image.jpg");
+                    imageUri = photoUtils.take_photo_util(PersonInfo.this, "com.healthmanager.android.fileprovider", "output_image.jpg");
                     //调用相机，拍摄结果会存到imageUri也就是outputImage中
                     Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                     intent.putExtra(EXTRA_OUTPUT, imageUri);

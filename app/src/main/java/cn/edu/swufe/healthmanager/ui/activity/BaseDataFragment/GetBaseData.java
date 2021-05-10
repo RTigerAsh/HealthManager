@@ -2,6 +2,7 @@ package cn.edu.swufe.healthmanager.ui.activity.BaseDataFragment;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import org.litepal.LitePal;
@@ -124,6 +125,33 @@ public class GetBaseData extends AppCompatActivity {
             updateUser.setAim_weight(this.aim_weight);
             updateUser.setSpecial_disease_List(this.List);
             updateUser.updateAll("id = ? ", ""+1);
+
+            SharedPreferences pref = getSharedPreferences("datafrag1", MODE_PRIVATE);
+            if(pref==null){
+                SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+                editor.putInt("zong",0);
+                editor.putInt("mei",0);
+                editor.putString("foodhot","暂无数据");
+                editor.putString("sporthot","暂无数据");
+                editor.putString("sleeptime","暂无数据");
+                editor.putString("weightnow","暂无数据");
+                editor.putInt("initpo",0);
+                editor.putString("foodlist","");
+                editor.putString("sportlist","");
+
+                editor.commit();
+            }
+//            SharedPreferences.Editor editor = getSharedPreferences("datafrag1", MODE_PRIVATE).edit();
+//            editor.putInt("zong",0);
+//            editor.putInt("mei",0);
+//            editor.putString("foodhot","0");
+//            editor.putString("sporthot","0");
+//            editor.putString("sleeptime","暂无");
+//            editor.putString("weightnow",this.weight+"");
+//            editor.putInt("initpo",0);
+//            editor.putString("foodlist","");
+//            editor.putString("sportlist","");
+//            editor.commit();
 
             //跳转到报告展示页面
             Intent intent1 = new Intent(GetBaseData.this, HealthReport.class);
